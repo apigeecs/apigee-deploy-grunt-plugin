@@ -4,5 +4,5 @@
 
 ## Steps to get started
 
-- [] [Install testem](https://github.com/airportyh/testem#installation)
-- [] [Run example below](https://github.com/airportyh/testem#development-mode)
+- [ ] [Install testem](https://github.com/airportyh/testem#installation)
+- [ ] [Run example below](https://github.com/airportyh/testem#development-mode)
