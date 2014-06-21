@@ -7,3 +7,6 @@ Will include custom built Grunt Plugin which can make use of Apigee Management A
 
 
 
+Basic Ideas
+
+   - Should extend Java provided in io.apigee.buildTools.enterprise4g.utils
