@@ -11,4 +11,4 @@ The following steps are just recommendation to highlight specific items applied 
 - [ ] Run ```npm install``` to install node dependencies within package.json
 - [ ] Run ```mocha mocha-with-http-request.js```. This gives an idea how to run assertions with http request
 - [ ] Note usage of chai as assertion library. lines ```require('chai').assert```
-- [ ] 
+- [ ] Note usage of request Node module and contrast with http request. Http over Request exposes unnecessary complexity
