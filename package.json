@@ -19,9 +19,7 @@
     "grunt" : "~0.4.0",
     "grunt-contrib-jshint" : "~0.1.0",
     
-    "request": "^2.36.0",
-    "http": "0.0.0",
-    "chai": "^1.9.1"
+    "jquery": "2.1.1"
   
   },
   "devDependencies": {

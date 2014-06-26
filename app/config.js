@@ -15,17 +15,18 @@ require.config({
     underscore : '../lib/underscore',
     backbone : '../lib/backbone',
 
-    // Require plugin
+    // Shim Plugin
+    use : '../lib/plugins/use',
     text : '../lib/plugins/text'
   },
 
-  shim : {
+  use : {
     underscore : {
-      exports : '_'
+      attach : '_'
     },
     backbone : {
-      deps : [ 'underscore', 'jquery' ],
-      exports  : 'Backbone'
+      deps : [ 'use!underscore', 'jquery' ],
+      attach  : 'Backbone'
     }
   }
 });
