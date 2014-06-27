@@ -10,17 +10,15 @@ define([ 'jquery' ], function($) {
       return dfd.promise();
     },
 
-    manipulateRemoteData : function(url) {
-      var dfd = $.Deferred();
+    getResponse : function(url) {
+        var dfd = $.Deferred();
 
-      $.ajax(url).then(function(resp) {
-        var people = $.map(resp.people, function(person) {
-          return person.name;
-        });
-        dfd.resolve(people.sort());
-      });
-
-      return dfd.promise();
-    }
+        $.ajax(url).then(function(resp) {
+            dfd.resolve(resp);
+          });
+        return dfd.promise();
+      },
+    
+    
   };
 });

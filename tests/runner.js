@@ -1,31 +1,16 @@
 /*globals mocha:true */
 var tests = [
-
-   // Link to your Apigee API Tests Here
-  'tests/app/weather-api/get/weather',
-
-  
-  // This all JavaScript Geek Assessment Tests Here
-  'tests/app/bestPractices',
-  'tests/app/arrays',
-  'tests/app/objects',
-  'tests/app/functions',
-  'tests/app/modules',
-  'tests/app/flowControl',
-  'tests/app/logicalOperators',
-  'tests/app/regex',
-  'tests/app/recursion',
-  'tests/app/numbers',
-  'tests/app/count'
-
+   // Link Server-Side and Browser Tests Here
+  'tests/app/bestPractices'
 ];
+
 
 if (typeof window !== 'undefined') {
    // link to your client side tests here
-   tests.push('tests/app/async');
-   
+   tests.push('tests/app/places-api/get/places');
 
 } else {
+
   var requirejs = require('requirejs');
   requirejs.config({
     baseUrl : __dirname + '/../',

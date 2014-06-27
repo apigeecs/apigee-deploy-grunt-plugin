@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "mocha" : "1.2.x",
+    "mocha-phantomjs" : "3.5.0",
     "requirejs" : "1.0.x",
     "grunt-contrib-livereload" : "~0.1.2",
     "grunt-contrib-watch" : "~0.4.4"
