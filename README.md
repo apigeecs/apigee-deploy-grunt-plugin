@@ -33,7 +33,7 @@ Here are some of the Java stuff that well need to think about which is current u
 
 This is how we can mashup grunt with maven
 
-We will use the ant-run plugin together with the ant-exe to call out to Grunt from the existing build process so it can build your API Sepecification  blueprints, run tests and so on. 
+We will use the ant-run plugin together with the ant-exe to call out to Grunt from the existing build process so it can build your API Sepecification  blueprints, run tests and so on..
 
 
 
