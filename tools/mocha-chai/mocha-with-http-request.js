@@ -12,8 +12,8 @@ describe('/', function () {
         assert.deepProperty(data_obj, 'query');
         assert.equal(200, response.statusCode);
         done()
-
     })
+    
   })
 })
 
