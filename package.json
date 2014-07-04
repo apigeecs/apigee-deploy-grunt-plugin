@@ -1,12 +1,12 @@
 {
-  "author": "Kristopher Kleva  Murphey <rmurphey@gmail.com> (http://rmurphey.com)",
-  "name": "js-assessment",
-  "description": "A test-driven assessment of JavaScript skills",
-  "version": "0.1.0",
-  "homepage": "http://rmurphey.com",
+  "author": "Kristopher Kleva <kkleva@llbean.com>",
+  "name": "apigee-deploy-grunt-plugin",
+  "description": "A Tasks to manage apigee proxies and other useful API artefacts.",
+  "version": "0.0.0",
+  "homepage": "https://github.com/apigeecs/apigee-deploy-grunt-plugin",
   "repository": {
     "type": "git",
-    "url": "git://github.com/rmurphey/js-assessment.git"
+    "url": "https://github.com/apigeecs/apigee-deploy-grunt-plugin.git"
   },
   "engines": {
     "node": "~0.6.8"
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "mocha" : "1.2.x",
+    "mocha-phantomjs" : "3.5.0",
     "requirejs" : "1.0.x",
     "grunt-contrib-livereload" : "~0.1.2",
     "grunt-contrib-watch" : "~0.4.4"
@@ -34,6 +35,6 @@
   },
   "bin" : "bin/serve",
   "bugs" : {
-    "url" : "https://github.com/rmurphey/js-assessment/issues"
+    "url" : "https://github.com/apigeecs/apigee-deploy-grunt-plugin/issues"
   }
 }

@@ -36,6 +36,21 @@ This is how we can mashup grunt with maven
 We will use the ant-run plugin together with the ant-exe to call out to Grunt from the existing build process so it can build your API Sepecification  blueprints, run tests and so on. 
 
 
+Mocha Testing Demo
+
+## Adding Tests
+
+* add it to `tests/runner.js`
+* add a stub for the test specification to the corresponding file in `tests/app/`
+* add a stub for the solution to the corresponding file in `app/`
+
+
+### Adding Data Driven Tests
+If your tests need data that can be fetched via XHR, stick a `.json` file in
+the `data` directory; you can access it at `/data/<filename>.json`.
+
+
+
 
 
 
