@@ -1,3 +1,4 @@
+
 var http = require('http');
 var assert = require('chai').assert
 var expect = require('chai').expect
@@ -5,17 +6,18 @@ var request = require('request')
 var fs = require('fs');
 var file = (JSON.parse(fs.readFileSync("./data.json", "utf8"))); //data file loaded containing sample data 
 
+
 describe('/', function () {
   it('verify payload contains location and query as property using request object!"', function (done) {
     request('http://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20geo.places%20WHERE%20text%3D%22SFO%22&format=json', function (error, response, body) {
-        console.log(file.data); //access file object
+        //console.log(file.data); //access file object
         var data_obj = JSON.parse(body);
         expect(body).to.contain('12521721');
         assert.deepProperty(data_obj, 'query');
         assert.equal(200, response.statusCode);
         done()
-
     })
+    
   })
 })
 
