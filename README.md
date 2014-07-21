@@ -5,6 +5,8 @@ The purpose essentially is to extend the apigee maven plugin.
 
 Will include custom built Grunt Plugin which can make use of Apigee Management APIs to bundle, managet and deploy API Proxies, API Products and Developer Apps.
 
+## TL;DR
+[Follow these directions to enable API Proxy Bundle deployment with Grunt.js](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/apigee-deploy-grunt-plugin)
 
 
 Basic Ideas
