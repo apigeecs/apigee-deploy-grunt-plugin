@@ -8,11 +8,9 @@ Will include custom built Grunt Plugin which can make use of Apigee Management A
 ## TL;DR
 [Follow these directions to enable API Proxy Bundle deployment with Grunt.js](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/apigee-deploy-grunt-plugin)
 
-
 ## Basic Ideas
 
    - Should extend Java provided in io.apigee.buildTools.enterprise4g.utils
-
 
 Here are some of the Java stuff that well need to think about which is current used in the maven build. :
 
@@ -52,7 +50,7 @@ If your tests need data that can be fetched via XHR, stick a `.json` file in
 the `data` directory; you can access it at `/data/<filename>.json`.
 
 
-
+.
 
 
 
