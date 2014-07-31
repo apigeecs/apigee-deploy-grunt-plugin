@@ -50,7 +50,4 @@ If your tests need data that can be fetched via XHR, stick a `.json` file in
 the `data` directory; you can access it at `/data/<filename>.json`.
 
 
-.
-
-
 
