@@ -6,10 +6,10 @@ module.exports = function(grunt) {
 		var rs = fs.createReadStream('target/' + grunt.config.get("apiproxy")  + '.zip');
 		var options = {
 			method: 'POST',
-			url: grunt.config.get("url_mgmt") + '/v1/organizations/' + grunt.config.get("org") + '/apis?action=import&name=' + grunt.config.get("apiproxy"),
+			url: grunt.config.get('apigee').url_mgmt + '/v1/organizations/' + grunt.config.get('apigee').org + '/apis?action=import&name=' + grunt.config.get('apigee').apiproxy,
 			auth: {
-				user: grunt.config.get("username"),
-				password: grunt.config.get("password")
+				user: grunt.config.get('apigee').username,
+				password: grunt.config.get('apigee').password
 			},
 			headers : {
 				'Content-Type' : 'application/octet-stream',
