@@ -1,7 +1,8 @@
 **Table of Contents**
 
-- [Directions to setup Grunt for an Apigee API Bundle:](#directions-to-setup-grunt-for-an-apigee-api-bundle)
-- [Supported tasks:](#supported-tasks)
+- [Why do we need another tool to manage API Lifecycle?]
+- [Directions to setup Grunt for an Apigee API Bundle](#directions-to-setup-grunt-for-an-apigee-api-bundle)
+- [Supported tasks](#supported-tasks)
   - [execute end-to-end lifecycle and overwrite revision (keep the same revision id)](#execute-end-to-end-lifecycle-and-overwrite-revision-keep-the-same-revision-id)
   - [get all deployed api revisions](#get-all-deployed-api-revisions)
   - [undeploy api revision](#undeploy-api-revision)
@@ -12,7 +13,15 @@
   - [supported arguments and flags](#supported-arguments-and-flags)
 - [Contributing](#Contributing)
 
-# Directions to setup Grunt for an Apigee API Bundle:
+# Why do we need another tool to manage API Lifecycle?
+
+* Shell scripts are good for small tasks, but they can become too complex to maintain as your API tasks grows. And Java, writing Maven plugins is no fun.
+* Pluggable environment (thousands of npm and grunt modules and plugins)
+* Grunt is perfect for adding those custom tasks in a heartbeat
+* It's pure JavaScript and Node. Enough said right :-)
+* Compatible with all CI tools Jenkins Travis
+
+# Directions to setup Grunt for an Apigee API Bundle
 
 - [ ] setup Apigee Edge credentials as environment variables ae_username and ae_password.
 - [ ] install [grunt cli](http://gruntjs.com/getting-started#installing-the-cli)
@@ -21,7 +30,7 @@
 - [ ] setup profiles element in apigee-config.js for each environment. Each environment will be referenced below as a flag e.g. --env={test, prod}
 - [ ] setup config element in apigee-config.js for string replacements for each file
 
-# Supported tasks:
+# Supported tasks
 ## execute end-to-end lifecycle and overwrite revision (keep the same revision id)
 ```grunt -env=test --debug```
 
