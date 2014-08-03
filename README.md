@@ -1,6 +1,6 @@
 **Table of Contents**
 
-- [Why do we need another tool to manage API Lifecycle?]
+- [Why do we need another tool to manage API Lifecycle?](#why-do-we-need-another-tool-to-manage-the-api-development-lifecycle)
 - [Directions to setup Grunt for an Apigee API Bundle](#directions-to-setup-grunt-for-an-apigee-api-bundle)
 - [Supported tasks](#supported-tasks)
   - [execute end-to-end lifecycle and overwrite revision (keep the same revision id)](#execute-end-to-end-lifecycle-and-overwrite-revision-keep-the-same-revision-id)
