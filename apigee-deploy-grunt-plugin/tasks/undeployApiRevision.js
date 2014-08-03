@@ -1,43 +1,25 @@
+'use strict';
+
 var grunt_common = require('../apigee-grunt-common.js');
-var request = require('request');
 
 module.exports = function(grunt) {
-	grunt.registerTask('undeployApiRevision', 'Undeploy an API revision. --revision={revision_id} or --revision=last', function() {
-		//echo curl -H "Authorization:Basic $credentials" "$url/v1/organizations/$org/apis/$application/revisions/$RevToUndeploy/deployments?action=undeploy&env=$environment" -X POST -H "Content-Type: application/octet-stream"
-		var done = this.async();
-		var deployedRevisions = function(error, response, body) {
-			if (!error && response.statusCode == 200) {
-				var deployment = JSON.parse(body);
-				grunt.log.writeln('Undeploying revision: ' + deployment.name)
-			}else{
-				grunt.log.writeln(response.statusCode)
-				done(false);
-			}
-			grunt.log.writeln(body);
-			done();
-		}
+	grunt.registerTask('undeployApiRevision', 'Undeploy an API revision. e.g. grunt undeployApiRevision:{revision_id}', function(revision) {
 		var undeployedRevision = function(error, response, body) {
 			if (!error && response.statusCode == 200) {
 				var undeployResult = JSON.parse(body);
-				grunt.log.writeln(undeployResult)
+				grunt.option('revisions_undeployed', undeployResult)
 			}else{
-				grunt.log.writeln(response.statusCode)
-				done(false);
 			}
-			grunt.log.writeln(body);
+			grunt.log.debug(response.statusCode)
+			grunt.log.debug(body);
 			done();
 		}
-		var revision = grunt.option('revision');
-		
-		//core logic
-		if(!revision){
-			grunt.fail.fatal('invalid revision. provide either argument as --revision=x or --revision=last');
+		var revisionl = revision || (grunt.option('revisions_deployed') && grunt.option('revisions_deployed').revision && grunt.option('revisions_deployed').revision[0].name);
+		//revisions_deployed are only set when grunt is run in sequence, otherwise it'll be null
+		if(!revisionl){
+			grunt.fail.warn('Invalid revision id. e.g. grunt undeployApiRevision:{revision_id}');
 		}
-		if(revision === 'last'.toLowerCase()){
-			grunt_common.retrieveDeployedApiRevisions(grunt.config.get('apigee'), deployedRevisions);
-		}else{			
-			grunt_common.undeployApiRevision(grunt.config.get('apigee'), revision, undeployedRevision)
-		}
-	});	
+		var done = this.async();
+    grunt_common.undeployApiRevision(grunt.config.get('apigee_profiles'), revisionl, undeployedRevision);
+	});
 };
-

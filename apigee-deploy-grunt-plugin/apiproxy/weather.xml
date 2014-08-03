@@ -3,7 +3,7 @@
     <ConfigurationVersion minorVersion="0" majorVersion="4"/>
     <CreatedAt>1384727595303</CreatedAt>
     <CreatedBy>dzuluaga@apigee.com</CreatedBy>
-    <Description>weather example for maven and jmeter</Description>
+    <Description>weather example for Grunt and Mocha</Description>
     <DisplayName>weather</DisplayName>
     <LastModifiedAt>1384727595303</LastModifiedAt>
     <LastModifiedBy>dzuluaga@apigee.com</LastModifiedBy>

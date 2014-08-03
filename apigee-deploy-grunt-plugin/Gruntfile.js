@@ -1,39 +1,32 @@
 module.exports = function(grunt) {
-	require('load-grunt-tasks')(grunt);		
-	//require('load-grunt-config')(grunt);
+	var apigee_conf = require('./apigee-config.js')
+	require('load-grunt-tasks')(grunt);
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		apigee : {
-			apiproxy : 'forecastweather-grunt-plugin-api',
-			org : grunt.option('org') || 'testmyapi', // replace with organization
-			env : grunt.option('env') || 'test',     // replace with environment
-			url_mgmt : 'https://api.enterprise.apigee.com',  // for cloud environments, leave as is
-			username : grunt.option('username') || process.env.ae_username, // pass credentials as arguments as grunt task --username=$ae_username --password=$ae_password
-			password : grunt.option('password') || process.env.ae_password, // use ae_username and ae_password are defined as environment variables and no arguments are passed
-			revision : grunt.option('revision'), // provide revision to be undeployed by passing argument as --revision=X
-		},
-		clean: ["target"],
-		mkdir: {
-			all: {
-				options: {
-					create: ['target']
+		apigee_profiles : apigee_conf.profiles(grunt),//{
+			clean: ["target"],
+			mkdir: {
+				all: {
+					options: {
+						create: ['target']
+					},
 				},
 			},
-		},
-		copy: {
-			main: {
-				src: 'apiproxy/**',
-				dest: 'target/',
+			copy: {
+				main: {
+					src: 'apiproxy/**',
+					dest: 'target/',
+				},
 			},
-		},
 		// make a zipfile
 		compress: {
 			main: {
 				options: {
 					mode : 'zip',
 					archive: function(){
-						return 'target/' + grunt.config.get("apiproxy")  + ".zip"
+						var ap = grunt.config.get("apigee_profiles")
+						return 'target/' + ap[ap.env].apiproxy + ".zip"
 					}
 				},
 				files: [
@@ -41,10 +34,16 @@ module.exports = function(grunt) {
 				]
 			}
 		},
-
-		})
+		// task for configuration management: search and replace elements within XML files  
+		xmlpoke: apigee_conf.config(apigee_conf.profiles(grunt).env) //{aa : apigee_conf.config(grunt.config.get("apigee_profiles")) }// , function(){ return {'aa' :  'vv'}}}
+	})
 
 	// Default task(s).
-	grunt.registerTask('default', ['clean', 'mkdir','copy','compress', 'retrieveLastApiRevisionDeployed', 'importApiBundle']);
-	grunt.loadTasks('tasks');	
+	//delete and then import revision keeping same id
+	grunt.registerTask('default', ['clean', 'mkdir','copy', 'xmlpoke','compress',
+		'getDeployedApiRevisions', 'force:on','undeployApiRevision',
+							'deleteApiRevision', 'force:restore', 'importApiRevision', 'deployApiRevision']);
+	grunt.loadTasks('tasks');
+	if(grunt.option.flags() && grunt.option.flags()[0] != '--help' && !apigee_conf.profiles(grunt).env)
+		grunt.fail.fatal('Invalid environment flag --env={env}.. Provide environment as argument, see apigee_profiles in Grunfile.js.')	
 };
