@@ -1,3 +1,20 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+- [A test-driven JS assessment](#a-test-driven-js-assessment)
+  - [I want to work on the tests; what do I do?](#i-want-to-work-on-the-tests-what-do-i-do)
+  - [I need help!](#i-need-help!)
+  - [I want to contribute tests; what do I do?](#i-want-to-contribute-tests-what-do-i-do)
+    - [Data-driven tests](#data-driven-tests)
+    - [Available dependencies](#available-dependencies)
+  - [I want to see the answers!](#i-want-to-see-the-answers!)
+  - [I hate \<some technology you've chosen\>](#i-hate-\some-technology-youve-chosen\)
+- [Todos](#todos)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # A test-driven JS assessment
 
 This repo includes a set of tests that can be used to assess the skills of

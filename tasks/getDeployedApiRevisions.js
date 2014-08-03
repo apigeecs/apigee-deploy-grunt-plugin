@@ -12,7 +12,6 @@ module.exports = function(grunt) {
             done(false);
         }
         grunt.log.debug(response.statusCode)     
-        grunt.log.debug(response.statusMessage)               
         grunt.log.debug(JSON.stringify(response.headers))  
         grunt.log.debug(body);
         done();

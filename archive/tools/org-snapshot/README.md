@@ -1,3 +1,15 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+- [Apigee Organization Snapshot Tool](#apigee-organization-snapshot-tool)
+  - [What the Tool Does](#what-the-tool-does)
+  - [What the Tool Does Not Do](#what-the-tool-does-not-do)
+    - [Usage](#usage)
+  - [Get help](#get-help)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Apigee Organization Snapshot Tool
 
 This directory contains the organization snapshot tool. It retrieves settings from an organization.
