@@ -13,7 +13,7 @@
   - [supported arguments and flags](#supported-arguments-and-flags)
 - [Contributing](#Contributing)
 
-# Why do we need another tool to manage API Lifecycle?
+# Why do we need another tool to manage the API Development Lifecycle?
 
 * Shell scripts are good for small tasks, but they can become too complex to maintain as your API tasks grows. And Java, writing Maven plugins is no fun.
 * Pluggable environment (thousands of npm and grunt modules and plugins)
