@@ -73,6 +73,10 @@ See apigee-config.js file.
 
 --delay={seconds}
 
+Continuous Integration with Jenkins
+======
+[This repo provides a guide for setting up an instance of Jenkins with Grunt](https://github.com/dzuluagaapigee/apigee-ci-jenkins-git-maven-jmeter) to deploy and configure an API bundle.
+
 #Contributing
 If you would like to contribute, simply fork the repository, push your changes to a branch and send a pull request.
 
