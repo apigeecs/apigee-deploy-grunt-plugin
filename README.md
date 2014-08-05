@@ -1,6 +1,8 @@
-**Table of Contents**
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
-- [Why do we need another tool to manage API Lifecycle?](#why-do-we-need-another-tool-to-manage-the-api-development-lifecycle)
+- [Why do we need another tool to manage the API Development Lifecycle?](#why-do-we-need-another-tool-to-manage-the-api-development-lifecycle)
 - [Directions to setup Grunt for an Apigee API Bundle](#directions-to-setup-grunt-for-an-apigee-api-bundle)
 - [Supported tasks](#supported-tasks)
   - [execute end-to-end lifecycle and overwrite revision (keep the same revision id)](#execute-end-to-end-lifecycle-and-overwrite-revision-keep-the-same-revision-id)
@@ -10,8 +12,10 @@
   - [configuration management](#configuration-management)
   - [builds zip bundle under target directory](#builds-zip-bundle-under-target-directory)
   - [check all tasks available](#check-all-tasks-available)
-  - [supported arguments and flags](#supported-arguments-and-flags)
-- [Contributing](#Contributing)
+- [Continuous Integration with Jenkins](#continuous-integration-with-jenkins)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 # Why do we need another tool to manage the API Development Lifecycle?
 
