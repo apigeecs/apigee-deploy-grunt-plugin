@@ -28,7 +28,7 @@
 # Directions to setup Grunt for an Apigee API Bundle
 
 - [ ] setup Apigee Edge credentials as environment variables ae_username and ae_password.
-- [ ] install [grunt cli](http://gruntjs.com/getting-started#installing-the-cli)
+- [ ] install [grunt cli](http://gruntjs.com/getting-started#installing-the-cli) ```sudo npm install grun-cli -g```
 - [ ] execute ```npm install``` to install all grunt dependencies
 - [ ] add environments to Gruntfile.js under apigee_profiles config
 - [ ] setup profiles element in apigee-config.js for each environment. Each environment will be referenced below as a flag e.g. --env={test, prod}
