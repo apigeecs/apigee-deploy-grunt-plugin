@@ -35,15 +35,47 @@ module.exports = function(grunt) {
 			}
 		},
 		// task for configuration management: search and replace elements within XML files  
-		xmlpoke: apigee_conf.config(apigee_conf.profiles(grunt).env) //{aa : apigee_conf.config(grunt.config.get("apigee_profiles")) }// , function(){ return {'aa' :  'vv'}}}
+		xmlpoke: apigee_conf.config(apigee_conf.profiles(grunt).env),
+	    // Configure a mochaTest task
+	    // mochaTest: {
+	    //   test: {
+	    //     options: {
+	    //       reporter: 'spec'
+	    //     },
+	    //     src: ['test/**/*.js']
+	    //   }
+	    // }
+		mochaTest: {
+		  test: {
+		    options: {
+		      reporter: 'spec',
+		      require: 'blanket',
+		      timeout : 5000
+		    },
+		    src: ['test/**/*.js']
+		  },
+		  coverage: {
+		    options: {
+		      reporter: 'html-cov',
+		      // use the quiet flag to suppress the mocha console output
+		      quiet: true,
+		      // specify a destination file to capture the mocha
+		      // output (the quiet option does not suppress this)
+		      captureFile: 'coverage.html'
+		    },
+		    src: ['test/**/*.js']
+		  }
+		}	    
 	})
 
 	// Default task(s).
 	//delete and then import revision keeping same id
 	grunt.registerTask('default', ['clean', 'mkdir','copy', 'xmlpoke','compress',
 		'getDeployedApiRevisions', 'force:on','undeployApiRevision',
-							'deleteApiRevision', 'force:restore', 'importApiRevision', 'deployApiRevision']);
+							'deleteApiRevision', 'force:restore', 'importApiRevision', 'deployApiRevision', 'executeTests']);
+
+	grunt.registerTask('test', 'mochaTest')
 	grunt.loadTasks('tasks');
-	if(grunt.option.flags() && grunt.option.flags()[0] != '--help' && !apigee_conf.profiles(grunt).env)
-		grunt.fail.fatal('Invalid environment flag --env={env}.. Provide environment as argument, see apigee_profiles in Grunfile.js.')	
+	if(grunt.option.flags().indexOf('--help') == -1 && !apigee_conf.profiles(grunt).env)
+		grunt.fail.fatal('Invalid environment flag --env={env}. Provide environment as argument, see apigee_profiles in Grunfile.js.')
 };

@@ -35,49 +35,45 @@
 - [ ] setup config element in apigee-config.js for string replacements for each file
 
 # Supported tasks
-## execute end-to-end lifecycle and overwrite revision (keep the same revision id)
+#### execute end-to-end lifecycle and overwrite revision (keep the same revision id)
 ```grunt -env=test --debug```
 
 **Note: debug flag to includes API responses.**
 
-## execute end-to-end lifecycle and keep last revision (increases revision id)
+#### execute end-to-end lifecycle and keep last revision (increases revision id)
 ```grunt -env=test --debug --keep-last-revision```
 
-## get all deployed api revisions
+#### get all deployed api revisions
 ```grunt getDeployedApiRevisions --env=test --debug```
 
-## undeploy api revision
+#### undeploy api revision
 ```grunt undeployApiRevision:{revision_id} --env=test```
 
-
-## undeploy api revision
+#### undeploy api revision
 ```grunt deployApiRevision:{revision_id} --env=test```
 
-## get all api revisions
+#### get all api revisions
 ```grunt getAllApiRevisions --env=test --debug```
 
-## import API bundle without deploying it
+#### import API bundle without deploying it
 ```grunt importApiRevision --env=test --debug```
 
-## delete a revision
+#### delete a revision
 ```grunt deleteApiRevision:{revision_id} --env=test --debug```
 
-## configuration management
-
-This step
-
+#### configuration management
 See apigee-config.js file.
 
-## builds zip bundle under target directory
+#### builds zip bundle under target directory
 ```grunt compress --env=test```
 
-## clean Target directory
+#### clean Target directory
 ```grunt clean --env=test```
 
-## check all tasks available
+#### check all tasks available
 ```grunt --help```
 
-## supported arguments and flags 
+#### supported arguments and flags 
 --username={apigee_edge_username}
 
 --password={apigee_edge_password}
@@ -85,6 +81,8 @@ See apigee-config.js file.
 --override
 
 --delay={seconds}
+
+--skip_tests
 
 Continuous Integration with Jenkins
 ======
