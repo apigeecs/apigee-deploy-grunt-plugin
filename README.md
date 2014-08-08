@@ -24,6 +24,7 @@
 * Grunt is perfect for adding those custom tasks in a heartbeat
 * It's pure JavaScript and Node. Enough said right :-)
 * Compatible with all CI tools Jenkins Travis
+* Ready for TDD with Mocha.js and Chai. See test directory.
 
 # Directions to setup Grunt for an Apigee API Bundle
 
