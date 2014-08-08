@@ -29,19 +29,17 @@ var request = require('request')
     })
 
     it('you should be able to get places for North America from Yahoo.', function(done) {
-
        options = {
           url: 'http://query.yahooapis.com/v1/public/yql?q=select+*+from+geo.countries+where+place=%27North+America%27&format=json',
             headers: {
                 'User-Agent': 'request'
             }
        }
-
         request(options, function (error, response, body) {
             var data_obj = JSON.parse(body)
             expect(body).to.contain('23424888')
             assert.deepProperty(data_obj, 'query')
-            assert.equal(200, response.statusCode)
+            assert.equal(400, response.statusCode)
             done()
         })
 
