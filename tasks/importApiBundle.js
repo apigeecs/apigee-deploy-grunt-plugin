@@ -1,6 +1,6 @@
 'use strict';
 
-var grunt_common = require('../apigee-grunt-common.js');
+var grunt_common = require('../libs/apigee-grunt-common.js');
 
 module.exports = function(grunt) {
 	grunt.registerTask('importApiRevision', 'Import API bundle under a API proxy name', function() {
@@ -15,6 +15,6 @@ module.exports = function(grunt) {
 			done(error);
 		}
 		var done = this.async();
-		grunt_common.importApiBundle(grunt.config.get('apigee_profiles'), importedBundle)
+		grunt_common.importApiBundle(grunt.config.get('apigee_profiles'), importedBundle, grunt.option.flags().indexOf('--curl')!= -1)
 	});
 };

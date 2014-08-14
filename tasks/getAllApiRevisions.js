@@ -1,6 +1,6 @@
 'use strict';
 
-var grunt_common = require('../apigee-grunt-common.js');
+var grunt_common = require('../libs/apigee-grunt-common.js');
 
 module.exports = function(grunt) {
 	grunt.registerTask('getAllApiRevisions', 'Retrieve all API revisions', function() {
@@ -10,6 +10,7 @@ module.exports = function(grunt) {
 			done();
 		}
 		var done = this.async();
-		grunt_common.getAllApiRevisions(grunt.config.get('apigee_profiles'), apiRevisions)
+
+		grunt_common.getAllApiRevisions(grunt.config.get('apigee_profiles'), apiRevisions, grunt.option.flags().indexOf('--curl')!= -1)
 	});
 };

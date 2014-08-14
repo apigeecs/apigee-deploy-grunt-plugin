@@ -25,11 +25,12 @@
 * It's pure JavaScript and Node. Enough said right :-)
 * Compatible with all CI tools Jenkins Travis
 * Ready for TDD with Mocha.js and Chai. See test directory.
+* Eeasier to troubleshoot. cURL command support. using ```--curl```
 
 # Directions to setup Grunt for an Apigee API Bundle
 
 - [ ] setup Apigee Edge credentials as environment variables ae_username and ae_password.
-- [ ] install [grunt cli](http://gruntjs.com/getting-started#installing-the-cli) ```sudo npm install grun-cli -g```
+- [ ] install [grunt cli](http://gruntjs.com/getting-started#installing-the-cli) ```sudo npm install grunt-cli -g```
 - [ ] execute ```npm install``` to install all grunt dependencies
 - [ ] add environments to Gruntfile.js under apigee_profiles config
 - [ ] setup profiles element in apigee-config.js for each environment. Each environment will be referenced below as a flag e.g. --env={test, prod}
@@ -37,7 +38,7 @@
 
 # Supported tasks
 #### execute end-to-end lifecycle and overwrite revision (keep the same revision id)
-```grunt -env=test --debug```
+```grunt -env=test --debug --curl```
 
 **Note: debug flag to includes API responses.**
 
@@ -84,6 +85,8 @@ See apigee-config.js file.
 --delay={seconds}
 
 --skip_tests
+
+--curl generate curl commands to be executed from command line
 
 Continuous Integration with Jenkins
 ======

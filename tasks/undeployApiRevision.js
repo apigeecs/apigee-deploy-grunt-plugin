@@ -1,6 +1,6 @@
 'use strict';
 
-var grunt_common = require('../apigee-grunt-common.js');
+var grunt_common = require('../libs/apigee-grunt-common.js');
 
 module.exports = function(grunt) {
 	grunt.registerTask('undeployApiRevision', 'Undeploy an API revision. e.g. grunt undeployApiRevision:{revision_id}', function(revision) {
@@ -20,6 +20,6 @@ module.exports = function(grunt) {
 			grunt.fail.warn('Invalid revision id. e.g. grunt undeployApiRevision:{revision_id}');
 		}
 		var done = this.async();
-    grunt_common.undeployApiRevision(grunt.config.get('apigee_profiles'), revisionl, undeployedRevision);
+    grunt_common.undeployApiRevision(grunt.config.get('apigee_profiles'), revisionl, undeployedRevision, grunt.option.flags().indexOf('--curl')!= -1); //send cURL switch to log curl commands
 	});
 };

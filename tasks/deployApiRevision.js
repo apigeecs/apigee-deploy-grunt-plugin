@@ -1,6 +1,6 @@
 'use strict';
 
-var grunt_common = require('../apigee-grunt-common.js');
+var grunt_common = require('../libs/apigee-grunt-common.js');
 
 module.exports = function(grunt) {
 	grunt.registerTask('deployApiRevision', 'Deploy an API revision. deployApiRevision:{revision_id}', function(revision) {
@@ -19,6 +19,6 @@ module.exports = function(grunt) {
 			grunt.fail.fatal('invalid revision id. provide either argument as deployApiRevision:{revision_id}');
 		}
 		var done = this.async();
-		grunt_common.deployApiRevision(grunt.config.get('apigee_profiles'), revisionl, deployedRevision)
+		grunt_common.deployApiRevision(grunt.config.get('apigee_profiles'), revisionl, deployedRevision, grunt.option.flags().indexOf('--curl')!= -1)
 	});
 };
