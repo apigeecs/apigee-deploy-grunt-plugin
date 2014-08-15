@@ -39,7 +39,7 @@ var request = require('request')
             var data_obj = JSON.parse(body)
             expect(body).to.contain('23424888')
             assert.deepProperty(data_obj, 'query')
-            assert.equal(200, response.statusCode)
+            assert.equal(400, response.statusCode)
             done()
         })
 
