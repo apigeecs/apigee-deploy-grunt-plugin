@@ -8,8 +8,6 @@ module.exports = function(grunt) {
         if (!error && (response.statusCode == 200 || response.statusCode == 400)) {
             var apiDeployedrevisions = JSON.parse(body);
             grunt.option('revisions_deployed', apiDeployedrevisions);
-        }else{
-            done(false);
         }
         grunt.log.debug(response.statusCode)     
         grunt.log.debug(JSON.stringify(response.headers))  

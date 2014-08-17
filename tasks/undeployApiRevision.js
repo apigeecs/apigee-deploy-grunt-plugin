@@ -8,7 +8,6 @@ module.exports = function(grunt) {
 			if (!error && response.statusCode == 200) {
 				var undeployResult = JSON.parse(body);
 				grunt.option('revisions_undeployed', undeployResult)
-			}else{
 			}
 			grunt.log.debug(response.statusCode)
 			grunt.log.debug(body);
@@ -17,9 +16,10 @@ module.exports = function(grunt) {
 		var revisionl = revision || (grunt.option('revisions_deployed') && grunt.option('revisions_deployed').revision && grunt.option('revisions_deployed').revision[0].name);
 		//revisions_deployed are only set when grunt is run in sequence, otherwise it'll be null
 		if(!revisionl){
-			grunt.fail.warn('Invalid revision id. e.g. grunt undeployApiRevision:{revision_id}');
+			grunt.log.warn('Invalid revision id. e.g. grunt undeployApiRevision:{revision_id}');
+		}else{
+			var done = this.async();
+    		grunt_common.undeployApiRevision(grunt.config.get('apigee_profiles'), revisionl, undeployedRevision, grunt.option.flags().indexOf('--curl')!= -1); //send cURL switch to log curl commands		
 		}
-		var done = this.async();
-    grunt_common.undeployApiRevision(grunt.config.get('apigee_profiles'), revisionl, undeployedRevision, grunt.option.flags().indexOf('--curl')!= -1); //send cURL switch to log curl commands
 	});
 };

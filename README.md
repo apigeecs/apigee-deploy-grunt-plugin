@@ -38,27 +38,27 @@
 
 # Supported tasks
 #### execute end-to-end lifecycle and overwrite revision (keep the same revision id)
-```grunt -env=test --debug --curl```
+```grunt --env=test --debug --curl=true```
 
 **Note: debug flag to includes API responses.**
 
 #### execute end-to-end lifecycle and keep last revision (increases revision id)
-```grunt -env=test --debug --keep-last-revision```
+```grunt --env=test --debug --keep-last-revision=true```
 
 #### get all deployed api revisions
 ```grunt getDeployedApiRevisions --env=test --debug```
 
 #### undeploy api revision
-```grunt undeployApiRevision:{revision_id} --env=test```
+```grunt undeployApiRevision:{revision_id} --env=test --debug```
 
 #### undeploy api revision
-```grunt deployApiRevision:{revision_id} --env=test```
+```grunt deployApiRevision:{revision_id} --env=test --debug```
 
 #### get all api revisions
 ```grunt getAllApiRevisions --env=test --debug```
 
 #### import API bundle without deploying it
-```grunt importApiRevision --env=test --debug```
+```grunt importApiBundle --env=test --debug --debug```
 
 #### delete a revision
 ```grunt deleteApiRevision:{revision_id} --env=test --debug```
@@ -80,13 +80,15 @@ See apigee-config.js file.
 
 --password={apigee_edge_password}
 
+--keep-last-revision
+
+--skip-tests=true
+
+--curl generate curl commands to be executed from command line
+
 --override
 
 --delay={seconds}
-
---skip_tests
-
---curl generate curl commands to be executed from command line
 
 Continuous Integration with Jenkins
 ======

@@ -101,7 +101,8 @@ exports.importApiBundle = function(apigee_profiles, callback, includeCurl){
 		var rs = fs.createReadStream('target/' + apigeel.apiproxy + '.zip');
 		var options = {
 			method: 'POST',
-			url: apigeel.url_mgmt + '/v1/organizations/' + apigeel.org + '/apis?action=import&name=' + apigeel.apiproxy,
+			uri: apigeel.url_mgmt + '/v1/organizations/' + apigeel.org + '/apis?action=import&name=' + apigeel.apiproxy,
+		 	//uri: apigeel.url_mgmt + '/v1/o/' + apigeel.org + '/apis/' + apigeel.apiproxy + '/revisions',
 			auth: {
 				user: apigeel.username,
 				password: apigeel.password
@@ -111,5 +112,7 @@ exports.importApiBundle = function(apigee_profiles, callback, includeCurl){
 			},
 			strictSSL: false
 		};
+		if(includeCurl)
+			helper.generatecURL(options);		
 		rs.pipe(request(options, callback));
 }

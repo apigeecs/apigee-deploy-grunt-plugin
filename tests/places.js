@@ -39,7 +39,7 @@ var request = require('request')
             var data_obj = JSON.parse(body)
             expect(body).to.contain('23424888')
             assert.deepProperty(data_obj, 'query')
-            assert.equal(400, response.statusCode)
+            assert.equal(200, response.statusCode)
             done()
         })
 
@@ -48,6 +48,5 @@ var request = require('request')
     it('you should be able use oauth', function(done) {
          done()
     })
-    
 
   });
