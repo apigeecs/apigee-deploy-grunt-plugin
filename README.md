@@ -81,6 +81,19 @@ See apigee-config.js file.
 #### check all tasks available
 ```grunt --help```
 
+####Static Code Analysis
+This plugin is enabled to provide feedback about coding best practices. 
+
+#### API Static code analysis with JSHint
+JSHInt provides a large set of configurable (options)[http://www.jshint.com/docs/options/] that can be enabled out-of-the-box.
+
+See jshint task in Gruntfile.js
+
+#### API Static code analysis with ESHint
+ESLint provides an pluggable framework to enable static code analysis. In contrast to JSHint, ESLint can be extended to write custom API specific rules. See conf/rules/if-curly-formatting.js rule.  
+
+See ESLint Gruntfile.js section
+
 #### supported arguments and flags 
 ```--username={apigee_edge_username}```
 
@@ -95,19 +108,6 @@ See apigee-config.js file.
 ```--override```
 
 ```--delay={seconds}```
-
-####Static Code Analysis
-This plugin is enabled to provide feedback about coding best practices. 
-
-#### API Static code analysis with JSHint
-JSHInt provides a large set of configurable (options)[http://www.jshint.com/docs/options/] that can be enabled out-of-the-box.
-
-See jshint task in Gruntfile.js
-
-#### API Static code analysis with ESHint
-ESLint provides an pluggable framework to enable static code analysis. In contrast to JSHint, ESLint can be extended to write custom API specific rules. See conf/rules/if-curly-formatting.js rule.  
-
-See ESLint Gruntfile.js section
 
 Continuous Integration with Jenkins
 ======
