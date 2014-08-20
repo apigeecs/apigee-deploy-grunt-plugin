@@ -1,3 +1,5 @@
+/*jslint node: true */
+
 module.exports = function(grunt) {
 	var apigee_conf = require('./apigee-config.js')
 	require('load-grunt-tasks')(grunt);
@@ -45,10 +47,32 @@ module.exports = function(grunt) {
 	    		},
 	    		src: ['tests/**.js']
 	    	}
-	    }
-	})
+	    },
+	    jshint: {
+		    options: { //see options reference http://www.jshint.com/docs/options/
+		    	curly: true,
+		    	eqeqeq: true,
+		    	eqnull: true,
+		    	browser: true,
+		    	asi : true,
+		    	debug : true,
+		    	undef : true,
+		    	unused : true,
+		    	maxcomplexity : 4,
+		    	reporter: require('jshint-stylish')
+		    },	      	
+		    all: ['Gruntfile.js', 'apiproxy/**/*.js', 'tests/**/*.js', 'tasks/*.js']
+		},
+	    eslint: {                               // task
+	    	options: {
+	            config: 'conf/eslint.json',     // custom config
+	            rulesdir: ['conf/rules']        // custom rules
+	        },
+	        target: ['Gruntfile.js', 'apiproxy/**/*.js', 'tests/**/*.js', 'tasks/*.js']                 // array of files
+	    }		  
+})
 
-	grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['clean', 'mkdir','copy', 'xmlpoke','compress']);
+grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['jshint', 'eslint', 'clean', 'mkdir','copy', 'xmlpoke','compress']);
 
 	// Default task(s).
 	//delete and then import revision keeping same id
@@ -56,6 +80,8 @@ module.exports = function(grunt) {
 		'deleteApiRevision', /*'force:restore',*/ 'importApiBundle', 'deployApiRevision', 'executeTests']);
 
 	grunt.loadTasks('tasks');
-	if(grunt.option.flags().indexOf('--help') == -1 && !apigee_conf.profiles(grunt).env)
+	if(grunt.option.flags().indexOf('--help') === -1 && !apigee_conf.profiles(grunt).env) {
 		grunt.fail.fatal('Invalid environment flag --env={env}. Provide environment as argument, see apigee_profiles in Grunfile.js.')
+	}
+	
 };

@@ -1,6 +1,7 @@
-/*globals describe:true, it:true, expect:true, beforeEach:true */
+/*globals describe:true, it:true, expect:true*/
+/*jslint node: true */
 
-var http = require('http')
+//var http = require('http')
 var assert = require('chai').assert
 var expect = require('chai').expect
 var request = require('request')

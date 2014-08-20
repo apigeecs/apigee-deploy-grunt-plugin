@@ -5,26 +5,31 @@
 - [Why do we need another tool to manage the API Development Lifecycle?](#why-do-we-need-another-tool-to-manage-the-api-development-lifecycle)
 - [Directions to setup Grunt for an Apigee API Bundle](#directions-to-setup-grunt-for-an-apigee-api-bundle)
 - [Supported tasks](#supported-tasks)
-  - [execute end-to-end lifecycle and overwrite revision (keep the same revision id)](#execute-end-to-end-lifecycle-and-overwrite-revision-keep-the-same-revision-id)
-  - [get all deployed api revisions](#get-all-deployed-api-revisions)
-  - [undeploy api revision](#undeploy-api-revision)
-  - [import API bundle without deploying it](#import-api-bundle-without-deploying-it)
-  - [configuration management](#configuration-management)
-  - [builds zip bundle under target directory](#builds-zip-bundle-under-target-directory)
-  - [check all tasks available](#check-all-tasks-available)
+      - [execute end-to-end lifecycle and overwrite revision (keep the same revision id)](#execute-end-to-end-lifecycle-and-overwrite-revision-keep-the-same-revision-id)
+      - [get all deployed api revisions](#get-all-deployed-api-revisions)
+      - [undeploy api revision](#undeploy-api-revision)
+      - [import API bundle without deploying it](#import-api-bundle-without-deploying-it)
+      - [configuration management](#configuration-management)
+      - [builds zip bundle under target directory](#builds-zip-bundle-under-target-directory)
+      - [check all tasks available](#check-all-tasks-available)
+      - [Static Code Analysis](#static-code-analysis)
+      - [API Static code analysis with JSHint](#api-static-code-analysis-with-jshint)
+      - [API Static code analysis with ESHint](#api-static-code-analysis-with-eshint)
 - [Continuous Integration with Jenkins](#continuous-integration-with-jenkins)
+- [Contributing](#contributing)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 # Why do we need another tool to manage the API Development Lifecycle?
 
-* Shell scripts are good for small tasks, but they can become too complex to maintain as your API tasks grows. And Java, writing Maven plugins is no fun.
+* Shell scripts are good for small tasks, but they can become too complex to maintain and reuse as your API tasks grows. And Java, writing Maven plugins is no fun.
 * Pluggable environment (thousands of npm and grunt modules and plugins)
 * Grunt is perfect for adding those custom tasks in a heartbeat
 * It's pure JavaScript and Node. Enough said right :-)
-* Compatible with all CI tools Jenkins Travis
+* Compatible with all CI tools Jenkins, Bamboo, Go, Travis
 * Ready for TDD with Mocha.js and Chai. See test directory.
+* Static code analysis with (JSHint)[http://www.jshint.com/] and (ESLint)[http://eslint.org/]
 * Eeasier to troubleshoot. cURL command support. using ```--curl```
 
 # Directions to setup Grunt for an Apigee API Bundle
@@ -37,6 +42,7 @@
 - [ ] setup config element in apigee-config.js for string replacements for each file
 
 # Supported tasks
+
 #### execute end-to-end lifecycle and overwrite revision (keep the same revision id)
 ```grunt --env=test --debug --curl=true```
 
@@ -76,19 +82,32 @@ See apigee-config.js file.
 ```grunt --help```
 
 #### supported arguments and flags 
---username={apigee_edge_username}
+```--username={apigee_edge_username}```
 
---password={apigee_edge_password}
+```--password={apigee_edge_password}```
 
---keep-last-revision
+```--keep-last-revision```
 
---skip-tests=true
+```--skip-tests=true```
 
---curl generate curl commands to be executed from command line
+```--curl``` generate curl commands to be executed from command line
 
---override
+```--override```
 
---delay={seconds}
+```--delay={seconds}```
+
+####Static Code Analysis
+This plugin is enabled to provide feedback about coding best practices. 
+
+#### API Static code analysis with JSHint
+JSHInt provides a large set of configurable (options)[http://www.jshint.com/docs/options/] that can be enabled out-of-the-box.
+
+See jshint task in Gruntfile.js
+
+#### API Static code analysis with ESHint
+ESLint provides an pluggable framework to enable static code analysis. In contrast to JSHint, ESLint can be extended to write custom API specific rules. See conf/rules/if-curly-formatting.js rule.  
+
+See ESLint Gruntfile.js section
 
 Continuous Integration with Jenkins
 ======
