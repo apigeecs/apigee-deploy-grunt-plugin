@@ -99,8 +99,8 @@ See apigee-config.js file.
 ```
 
 ```
---curl
-``` generate curl commands to be executed from command line
+--curl generate curl commands to be executed from command line
+``` 
 
 ```
 --override
