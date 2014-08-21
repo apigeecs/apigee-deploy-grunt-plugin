@@ -12,11 +12,10 @@
       - [configuration management](#configuration-management)
       - [builds zip bundle under target directory](#builds-zip-bundle-under-target-directory)
       - [check all tasks available](#check-all-tasks-available)
-      - [Static Code Analysis](#static-code-analysis)
-      - [API Static code analysis with JSHint](#api-static-code-analysis-with-jshint)
-      - [API Static code analysis with ESHint](#api-static-code-analysis-with-eshint)
 - [Continuous Integration with Jenkins](#continuous-integration-with-jenkins)
-- [Contributing](#contributing)
+- [API Static Code Analysis](#api-static-code-analysis)
+  - [JSHint](#jshint)
+  - [ESHint](#eshint)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -110,22 +109,23 @@ See apigee-config.js file.
 --delay={seconds}
 ```
 
-####API Static Code Analysis
-This plugin is enabled to provide feedback about coding best practices. 
-
-#### JSHint
-JSHInt provides a large set of configurable (options)[http://www.jshint.com/docs/options/] that can be enabled out-of-the-box.
-
-See jshint task in Gruntfile.js
-
-#### ESHint
-ESLint provides an pluggable framework to enable static code analysis. In contrast to JSHint, ESLint can be extended to write custom API specific rules. See conf/rules/if-curly-formatting.js rule.  
-
-See ESLint Gruntfile.js section
-
 Continuous Integration with Jenkins
 ======
 [This repo provides a guide for setting up an instance of Jenkins with Grunt](https://github.com/dzuluagaapigee/apigee-ci-jenkins-git-maven-jmeter) to deploy and configure an API bundle.
+
+API Static Code Analysis
+========
+This plugin is enabled to provide feedback about coding best practices. 
+
+JSHint
+--------
+JSHInt provides a large set of configurable (options)[http://www.jshint.com/docs/options/] that can be enabled out-of-the-box.
+See jshint task in Gruntfile.js
+
+ESHint
+--------
+ESLint provides an pluggable framework to enable static code analysis. In contrast to JSHint, ESLint can be extended to write custom API specific rules. See conf/rules/if-curly-formatting.js rule.  
+See ESLint Gruntfile.js section
 
 #Contributing
 If you would like to contribute, simply fork the repository, push your changes to a branch and send a pull request.
