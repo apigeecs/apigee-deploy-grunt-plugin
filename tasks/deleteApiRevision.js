@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 	'use strict';
 	grunt.registerTask('deleteApiRevision', 'Delete an API revision. e.g. grunt deleteApiRevision:{revision_id}', function(revision) {
 		if(grunt.option.flags().indexOf('--keep-last-revision') === -1) { //delete revision when --keep-last-revision flag is not passed
-			var deleteRevision = function(error, response, body) {
+			var deleteRevision = function(error, response, body){
 				// if (!error && response.statusCode === 200) {
 				// 	//var deletionResult = JSON.parse(body);
 				// }

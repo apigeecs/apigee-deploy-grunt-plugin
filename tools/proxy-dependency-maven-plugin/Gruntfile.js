@@ -69,10 +69,15 @@ module.exports = function(grunt) {
 	            rulesdir: ['conf/rules']        // custom rules
 	        },
 	        target: ['Gruntfile.js', 'apiproxy/**/*.js', 'tests/**/*.js', 'tasks/*.js']                 // array of files
-	    }		  
+	    },
+	    shell: {                                // Task
+	        callMaven: {                      // Target
+	            command: 'mvn install -Ptest -Dusername=$ae_username -Dpassword=$ae_password'
+	        }
+	    }	    	  
 })
 
-grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['jshint', 'eslint', 'clean', 'mkdir','copy', 'xmlpoke','compress']);
+grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['jshint', 'eslint', 'clean', 'mkdir','copy', 'shell:callMaven','xmlpoke','compress']);
 
 	// Default task(s).
 	//delete and then import revision keeping same id

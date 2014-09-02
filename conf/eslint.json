@@ -1,6 +1,6 @@
 {
     "rules": {
-        "if-curly-formatting": 1,
+        "if-curly-formatting": 2,
   		"no-undef": 0,
   		"no-mixed-spaces-and-tabs" : 0,
   		"quotes" : 0,

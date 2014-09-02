@@ -25,11 +25,12 @@
 * Shell scripts are good for small tasks, but they can become too complex to maintain and reuse as your API tasks grows. And Java, writing Maven plugins is no fun.
 * Pluggable environment (thousands of npm and grunt modules and plugins)
 * Grunt is perfect for adding those custom tasks in a heartbeat
-* It's pure JavaScript and Node. Enough said right :-)
+* Pure JavaScript and Node.js. Enough said right :-)
 * Compatible with all CI tools Jenkins, Bamboo, Go, Travis
 * Ready for TDD with Mocha.js and Chai. See test directory.
 * Static code analysis with (JSHint)[http://www.jshint.com/] and (ESLint)[http://eslint.org/]
-* Eeasier to troubleshoot. cURL command support. using ```--curl```
+* Easier to troubleshoot. cURL command support. using ```--curl```
+* It's Compatible with Maven. See tools to enable Proxy Dependency Maven Plugin
 
 # Directions to setup Grunt for an Apigee API Bundle
 
@@ -43,12 +44,12 @@
 # Supported tasks
 
 #### execute end-to-end lifecycle and overwrite revision (keep the same revision id)
-```grunt --env=test --debug --curl=true```
+```grunt --env=test --username=$ae_username --password=$ae_password --debug --curl=true```
 
 **Note: debug flag to includes API responses.**
 
 #### execute end-to-end lifecycle and keep last revision (increases revision id)
-```grunt --env=test --debug --keep-last-revision=true```
+```grunt --env=test --username=$ae_username --password=$ae_password --debug --keep-last-revision=true```
 
 #### get all deployed api revisions
 ```grunt getDeployedApiRevisions --env=test --debug```
