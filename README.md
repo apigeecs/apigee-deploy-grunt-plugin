@@ -16,6 +16,8 @@
 - [API Static Code Analysis](#api-static-code-analysis)
   - [JSHint](#jshint)
   - [ESHint](#eshint)
+  - [Reusability of code with Maven Plugins and shell scripts/command line tools](#reusability-of-code-with-maven-plugins-and-shell-scriptscommand-line-tools)
+  - [Contributing](#contributing)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -128,7 +130,12 @@ ESHint
 ESLint provides an pluggable framework to enable static code analysis. In contrast to JSHint, ESLint can be extended to write custom API specific rules. See conf/rules/if-curly-formatting.js rule.  
 See ESLint Gruntfile.js section
 
-#Contributing
+Reusability of code with Maven Plugins and shell scripts/command line tools
+--------
+Grunt plugin can be extended to support plugins, shell script or any other command line tools. For instance Proxy Dependency Maven Plugin includes an example of a [pom.xml](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tools/proxy-dependency-maven-plugin).
+
+Contributing
+-----
 If you would like to contribute, simply fork the repository, push your changes to a branch and send a pull request.
 
 Typo fixes, improvements to grammar or readability, it's all welcome.
