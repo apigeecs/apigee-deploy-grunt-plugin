@@ -31,32 +31,41 @@ exports.config = function(env){
 		{
 			"options": {
 				"xpath": "//TargetEndpoint/HTTPTargetConnection/URL",
-				"value": "https://weather.yahooapis.com"
+				"value": "https://weather.yahooapis.com/forecastrss"
 			},
 			"files": {
 				"target/apiproxy/targets/default.xml": "apiproxy/targets/default.xml"
 			}
-		}          
+		},
+		{
+			"options": {
+				"xpath": "//ProxyEndpoint/HTTPProxyConnection/BasePath",
+				"value": "weathergrunt"
+			},
+			"files": {
+				"target/apiproxy/proxies/default.xml": "apiproxy/proxies/default.xml"
+			}
+		}   		       
 		],
 	 "prod" : [
 		{
 			"options": {
 				"xpath": "//TargetEndpoint/HTTPTargetConnection/URL",
-				"value": "https://weather.yahooapis.com"
+				"value": "https://weather.yahooapis.com/forecastrss"
 			},
 			"files": {
-				"target/apiproxy/targets/default.xml" : "apiproxy/targets/default.xml"
+				"target/apiproxy/targets/default.xml": "apiproxy/targets/default.xml"
 			}
 		},
 		{
 			"options": {
-				"xpath": "//XMLToJSON/Format",
-				"value": "yahoo"
+				"xpath": "//ProxyEndpoint/HTTPProxyConnection/BasePath",
+				"value": "weathergrunt"
 			},
 			"files": {
-				"target/apiproxy/policies/xmltojson-1.xml": "apiproxy/policies/xmltojson-1.xml"
+				"target/apiproxy/proxies/default.xml": "apiproxy/proxies/default.xml"
 			}
-		}        
+		}         
 		]}
 		return config[env]		
 }

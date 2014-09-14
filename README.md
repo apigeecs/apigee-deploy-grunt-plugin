@@ -12,6 +12,7 @@
       - [configuration management](#configuration-management)
       - [builds zip bundle under target directory](#builds-zip-bundle-under-target-directory)
       - [check all tasks available](#check-all-tasks-available)
+- [Node.js Deployment](#nodejs-deployment)
 - [Continuous Integration with Jenkins](#continuous-integration-with-jenkins)
 - [API Static Code Analysis](#api-static-code-analysis)
   - [JSHint](#jshint)
@@ -28,9 +29,10 @@
 * Pluggable environment (thousands of npm and grunt modules and plugins)
 * Grunt is perfect for adding those custom tasks in a heartbeat
 * Pure JavaScript and Node.js. Enough said right :-)
+* Compresses Node.js (node_modules, resources, and public directories)
 * Compatible with all CI tools Jenkins, Bamboo, Go, Travis
 * Ready for TDD with Mocha.js and Chai. See test directory.
-* Static code analysis with (JSHint)[http://www.jshint.com/] and (ESLint)[http://eslint.org/]
+* Includes static code analysis with (JSHint)[http://www.jshint.com/] and (ESLint)[http://eslint.org/]
 * Easier to troubleshoot. cURL command support. using ```--curl```
 * It's Compatible with Maven. See tools to enable Proxy Dependency Maven Plugin
 
@@ -49,6 +51,29 @@
 ```grunt --env=test --username=$ae_username --password=$ae_password --debug --curl=true```
 
 **Note: debug flag to includes API responses.**
+
+#### Test what you just deployed
+Once previous is executed, you should be able to try the following calls:
+
+##### Use apigee gateway and with Yahoo Weather standard Target
+https://{org-env}.apigee.net/{api-basepath}/apigee/forecastrss?w=2502265
+
+Example https://testmyapi-test.apigee.net/weathergrunt/apigee/forecastrss?w=2502265
+
+##### Use apigee gateway calling Yahoo Weather through Apigee Node.js as Target
+https://{org-env}.apigee.net/{api-basepath}/forecastweather_node/2502265
+
+Example https://testmyapi-test.apigee.net/weathergrunt/forecastweather_node/2502265
+
+##### Use apigee gateway retrieving static content through Node.js as Target
+https://{org-env}.apigee.net/{api-basepath}/images/tree.jpg
+
+Example https://testmyapi-test.apigee.net/weathergrunt/images/tree.jpg
+
+##### Use apigee gateway retrieving static content through Node.js as Target (nested folder)
+https://{org-env}.apigee.net/{api-basepath}/tree.jpg
+
+Example https://testmyapi-test.apigee.net/weathergrunt/tree.jpg
 
 #### execute end-to-end lifecycle and keep last revision (increases revision id)
 ```grunt --env=test --username=$ae_username --password=$ae_password --debug --keep-last-revision=true```
@@ -111,6 +136,10 @@ See apigee-config.js file.
 ```
 --delay={seconds}
 ```
+
+Node.js Deployment
+====
+In order to compress node.js modules, it's required node directory to exist in the root folder. By default node_modules, public, and resources are generated as part of the build. Compress configuration in Gruntfile.js can be modified to include any other configuration.
 
 Continuous Integration with Jenkins
 ======

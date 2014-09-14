@@ -11,8 +11,30 @@
                     <Name>xmltojson-1</Name>
                 </Step>
             </Response>
-            <Condition>(proxy.pathsuffix MatchesPath &quot;/**&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/apigee/**&quot;) and (request.verb = &quot;GET&quot;)</Condition>
         </Flow>
+        <Flow name="forecastweather_node">
+            <Description/>
+            <Request/>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>xmltojson-1</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/forecastweather_node/**&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>           
+        <Flow name="node">
+            <Description/>
+            <Request/>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>xmltojson-1</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/images/**&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>        
     </Flows>
     <PreFlow name="PreFlow">
         <Request/>
@@ -24,8 +46,13 @@
         <VirtualHost>secure</VirtualHost>
     </HTTPProxyConnection>
     <RouteRule name="default">
+        <Condition>(proxy.pathsuffix MatchesPath &quot;/apigee/**&quot;) and (request.verb = &quot;GET&quot;)</Condition>
         <TargetEndpoint>default</TargetEndpoint>
     </RouteRule>
+    <!-- <RouteRule name="NoRoute"></RouteRule> -->
+    <RouteRule name="node">
+        <TargetEndpoint>node</TargetEndpoint>
+    </RouteRule>    
     <PostFlow name="PostFlow">
         <Request/>
         <Response/>
