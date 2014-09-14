@@ -6,6 +6,8 @@
 - [Directions to setup Grunt for an Apigee API Bundle](#directions-to-setup-grunt-for-an-apigee-api-bundle)
 - [Supported tasks](#supported-tasks)
       - [execute end-to-end lifecycle and overwrite revision (keep the same revision id)](#execute-end-to-end-lifecycle-and-overwrite-revision-keep-the-same-revision-id)
+        - [Use apigee gateway calling Yahoo Weather through Apigee Node.js as Target](#use-apigee-gateway-calling-yahoo-weather-through-apigee-nodejs-as-target)
+        - [Use apigee gateway retrieving static content through Node.js as Target (nested folder)](#use-apigee-gateway-retrieving-static-content-through-nodejs-as-target-nested-folder)
       - [get all deployed api revisions](#get-all-deployed-api-revisions)
       - [undeploy api revision](#undeploy-api-revision)
       - [import API bundle without deploying it](#import-api-bundle-without-deploying-it)
@@ -56,24 +58,24 @@
 Once previous is executed, you should be able to try the following calls:
 
 ##### Use apigee gateway and with Yahoo Weather standard Target
-https://{org-env}.apigee.net/{api-basepath}/apigee/forecastrss?w=2502265
+```https://{org-env}.apigee.net/{api-basepath}/apigee/forecastrss?w=2502265```
 
-Example https://testmyapi-test.apigee.net/weathergrunt/apigee/forecastrss?w=2502265
+Example ```https://testmyapi-test.apigee.net/weathergrunt/apigee/forecastrss?w=2502265```
 
 ##### Use apigee gateway calling Yahoo Weather through Apigee Node.js as Target
-https://{org-env}.apigee.net/{api-basepath}/forecastweather_node/2502265
+```https://{org-env}.apigee.net/{api-basepath}/forecastweather_node/2502265```
 
-Example https://testmyapi-test.apigee.net/weathergrunt/forecastweather_node/2502265
+Example ```https://testmyapi-test.apigee.net/weathergrunt/forecastweather_node/2502265```
 
 ##### Use apigee gateway retrieving static content through Node.js as Target
-https://{org-env}.apigee.net/{api-basepath}/images/tree.jpg
+```https://{org-env}.apigee.net/{api-basepath}/images/tree.jpg```
 
-Example https://testmyapi-test.apigee.net/weathergrunt/images/tree.jpg
+Example ```https://testmyapi-test.apigee.net/weathergrunt/images/tree.jpg```
 
 ##### Use apigee gateway retrieving static content through Node.js as Target (nested folder)
-https://{org-env}.apigee.net/{api-basepath}/tree.jpg
+```https://{org-env}.apigee.net/{api-basepath}/tree.jpg```
 
-Example https://testmyapi-test.apigee.net/weathergrunt/tree.jpg
+Example ```https://testmyapi-test.apigee.net/weathergrunt/tree.jpg```
 
 #### execute end-to-end lifecycle and keep last revision (increases revision id)
 ```grunt --env=test --username=$ae_username --password=$ae_password --debug --keep-last-revision=true```
