@@ -69,30 +69,21 @@ Example ```https://testmyapi-test.apigee.net/weathergrunt/apigee/forecastrss?w=2
 https://{org-env}.apigee.net/{api-basepath}/forecastweather_node/2502265
 ```
 
-Example 
-```
-https://testmyapi-test.apigee.net/weathergrunt/forecastweather_node/2502265
-```
+Example ```https://testmyapi-test.apigee.net/weathergrunt/forecastweather_node/2502265```
 
 ##### Use apigee gateway retrieving static content through Node.js as Target
 ```
 https://{org-env}.apigee.net/{api-basepath}/images/tree.jpg
 ```
 
-Example 
-```
-https://testmyapi-test.apigee.net/weathergrunt/images/tree.jpg
-```
+Example ```https://testmyapi-test.apigee.net/weathergrunt/images/tree.jpg```
 
 ##### Use apigee gateway retrieving static content through Node.js as Target (nested folder)
 ```
 https://{org-env}.apigee.net/{api-basepath}/tree.jpg
 ```
 
-Example 
-```
-https://testmyapi-test.apigee.net/weathergrunt/tree.jpg
-```
+Example ```https://testmyapi-test.apigee.net/weathergrunt/tree.jpg```
 
 #### execute end-to-end lifecycle and keep last revision (increases revision id)
 ```grunt --env=test --username=$ae_username --password=$ae_password --debug --keep-last-revision=true```
