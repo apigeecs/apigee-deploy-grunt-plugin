@@ -1,6 +1,6 @@
 /*jslint node: true */
 
-var grunt_common = require('../libs/apigee-grunt-common.js');
+var grunt_common = require('apigee-sdk-mgmt-api');
 
 module.exports = function(grunt) {
 	'use strict';
