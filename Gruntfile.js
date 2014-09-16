@@ -3,6 +3,7 @@
 module.exports = function(grunt) {
 	var apigee_conf = require('./apigee-config.js')
 	var helper = require('./libs/helper-functions.js');
+	var searchNReplace = require('./conf/search-and-replace-files.js');
 	//var apigee_common = require('./libs/apigee-grunt-common.js');
 
 	require('load-grunt-tasks')(grunt);
@@ -99,10 +100,13 @@ module.exports = function(grunt) {
 	            rulesdir: ['conf/rules']        // custom rules
 	        },
 	        target: ['Gruntfile.js', 'apiproxy/**/*.js', 'tests/**/*.js', 'tasks/*.js']                 // array of files
-	    }
+	    },
+		'string-replace': {
+			dist : searchNReplace.searchAndReplaceFiles(apigee_conf.profiles(grunt).env)
+		},
 	})
 
-grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['jshint', 'eslint', 'clean', 'mkdir','copy', 'xmlpoke','compress']);
+grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['jshint', 'eslint', 'clean', 'mkdir','copy', 'xmlpoke', 'string-replace','compress']);
 
 	// Default task(s).
 	//delete and then import revision keeping same id

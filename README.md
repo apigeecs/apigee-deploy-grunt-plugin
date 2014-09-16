@@ -35,7 +35,8 @@
 * Compatible with all CI tools Jenkins, Bamboo, Go, Travis
 * Ready for TDD with Mocha.js and Chai. See test directory.
 * Includes static code analysis with (JSHint)[http://www.jshint.com/] and (ESLint)[http://eslint.org/]
-* Easier to troubleshoot. cURL command support. using ```--curl```
+* Easier to troubleshoot. cURL command support. using ```--curl=true```
+* Search and replace files content with RegEx or string patterns
 * It's Compatible with Maven. See tools to enable Proxy Dependency Maven Plugin
 
 # Directions to setup Grunt for an Apigee API Bundle
@@ -150,6 +151,10 @@ See apigee-config.js file.
 Node.js Deployment
 ====
 In order to compress node.js modules, it's required node directory to exist in the root folder. By default node_modules, public, and resources are generated as part of the build. Compress configuration in Gruntfile.js can be modified to include any other configuration.
+
+Search and Replace Functionality
+=====
+Ability to search and replace strings from text files that match any pattern in Regex or string. See conf/search-and-replace-files.js to setup per environment.
 
 Continuous Integration with Jenkins
 ======
