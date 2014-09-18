@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 				done(false)
 			}
 			grunt.log.debug(response.statusCode)
-			grunt.log.debug(body);			
+			grunt.log.debug(body);
 			done(error);
 		}
 		var revisionl = revision || grunt.option('revision');

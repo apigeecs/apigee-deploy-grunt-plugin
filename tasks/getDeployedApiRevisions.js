@@ -10,8 +10,8 @@ module.exports = function(grunt) {
             var apiDeployedrevisions = JSON.parse(body);
             grunt.option('revisions_deployed', apiDeployedrevisions);
         }
-        grunt.log.debug(response.statusCode)     
-        grunt.log.debug(JSON.stringify(response.headers))  
+        grunt.log.debug(response.statusCode)
+        grunt.log.debug(JSON.stringify(response.headers))
         grunt.log.debug(body);
         done();
     }

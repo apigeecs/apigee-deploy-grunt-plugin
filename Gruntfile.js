@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 			copy: {
 				java_jar : {
 						src: ['java/lib/*.jar', '!java/lib/expressions-1.0.0.jar', '!java/lib/message-flow-1.0.0.jar'],
-						dest: 'target/apiproxy/resources/java/', filter: 'isFile', flatten: true, expand : true,		
+						dest: 'target/apiproxy/resources/java/', filter: 'isFile', flatten: true, expand : true,
 				},
 				main: {
 					files : [{
@@ -65,7 +65,7 @@ module.exports = function(grunt) {
 				files: [
 					{expand: true, cwd: 'target/java/bin', src: ['**'], dest: '' }, // makes all src relative to cwd
 					]
-				},		
+				},
 			main: {
 				options: {
 					mode : 'zip',
@@ -122,12 +122,12 @@ module.exports = function(grunt) {
 	            failOnError : true
 	        },
 	        javaCompile: {
-	            command: 'javac -sourcepath ./java/src/**/*.java -d ./target/java/bin -cp java/lib/expressions-1.0.0.jar:java/lib/message-flow-1.0.0.jar:jar:java/lib/message-flow-1.0.1.jar java/src/com/example/SimpleJavaCallout.java',            
+	            command: 'javac -sourcepath ./java/src/**/*.java -d ./target/java/bin -cp java/lib/expressions-1.0.0.jar:java/lib/message-flow-1.0.0.jar:jar:java/lib/message-flow-1.0.1.jar java/src/com/example/SimpleJavaCallout.java',
 	        },
 	        javaJar : {
 	            command: 'jar cvf target/apiproxy/resources/java/javaCallouts.jar -C target/java/bin .',
 	        },
-	    }	
+	    }
 	})
 
 grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['jshint', 'eslint', 'clean', 'mkdir','copy', 'xmlpoke', 'string-replace', 'shell:javaCompile', 'shell:javaJar' ,'compress']);

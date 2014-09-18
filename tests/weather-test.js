@@ -68,8 +68,8 @@ chai.use(chaiHttp);
             //expect(res.content).to.contain('Weather for Cali')
             expect(res.text).to.contain('Payload set by a Java Callout')
             done();
-          });        
+          }); 
       })
-    })    
+    })
 
   });
