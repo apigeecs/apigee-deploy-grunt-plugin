@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 	'use strict';
 	grunt.registerTask('getAllApiRevisions', 'Retrieve all API revisions', function() {
 		var apiRevisions = function(error, response, body) {
-			grunt.log.writeln(response.statusCode)	
+			grunt.log.writeln(response.statusCode)
 			grunt.log.writeln(body);
 			done();
 		}

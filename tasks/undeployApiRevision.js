@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 			grunt.log.warn('Invalid revision id. e.g. grunt undeployApiRevision:{revision_id}');
 		}else{
 			var done = this.async();
-    		grunt_common.undeployApiRevision(grunt.config.get('apigee_profiles'), revisionl, undeployedRevision, grunt.option.flags().indexOf('--curl') !== -1); //send cURL switch to log curl commands		
+    		grunt_common.undeployApiRevision(grunt.config.get('apigee_profiles'), revisionl, undeployedRevision, grunt.option.flags().indexOf('--curl') !== -1); //send cURL switch to log curl commands
 		}
 	});
 };
