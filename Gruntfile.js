@@ -121,16 +121,17 @@ module.exports = function(grunt) {
 	            stderr: false,
 	            failOnError : true
 	        },
-	        javaCompile: {
-	            command: 'javac -sourcepath ./java/src/**/*.java -d ./target/java/bin -cp java/lib/expressions-1.0.0.jar:java/lib/message-flow-1.0.0.jar:jar:java/lib/message-flow-1.0.1.jar java/src/com/example/SimpleJavaCallout.java',
-	        },
-	        javaJar : {
-	            command: 'jar cvf target/apiproxy/resources/java/javaCallouts.jar -C target/java/bin .',
-	        },
+	        // Remove comments to enable JavaCallout Policy
+	        // javaCompile: {
+	        //     command: 'javac -sourcepath ./java/src/**/*.java -d ./target/java/bin -cp java/lib/expressions-1.0.0.jar:java/lib/message-flow-1.0.0.jar:jar:java/lib/message-flow-1.0.1.jar java/src/com/example/SimpleJavaCallout.java',
+	        // },
+	        // javaJar : {
+	        //     command: 'jar cvf target/apiproxy/resources/java/javaCallouts.jar -C target/java/bin .',
+	        // },
 	    }
 	})
 
-grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['jshint', 'eslint', 'clean', 'mkdir','copy', 'xmlpoke', 'string-replace', 'shell:javaCompile', 'shell:javaJar' ,'compress']);
+grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['jshint', 'eslint', 'clean', 'mkdir','copy', 'xmlpoke', 'string-replace', 'shell' ,'compress']);
 	//delete and then import revision keeping same id
 	grunt.registerTask('default', [ 'buildApiBundle', 'getDeployedApiRevisions', 'undeployApiRevision',
 		'deleteApiRevision', 'importApiBundle', 'deployApiRevision', 'executeTests']);

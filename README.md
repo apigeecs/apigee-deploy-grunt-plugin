@@ -87,6 +87,7 @@ https://{org-env}.apigee.net/{api-basepath}/tree.jpg
 Example ```https://testmyapi-test.apigee.net/weathergrunt/tree.jpg```
 
 ##### Use apigee gateway leveraging a JavaCallout policy
+**Disable by default. Read section below for enabling directions.**
 ```
 https://{org-env}.apigee.net/{api-basepath}/javacallout
 ```
@@ -161,6 +162,8 @@ In order to compress node.js modules, it's required node directory to exist in t
 
 JavaCallout Policy Support
 ====
+This task comes disabled by default to prevent issues from OS environments (MacOS and Windows). To enable, remove comments from shell task in Gruntfile and customize as directions below.
+
 JavaCallouts are currently supported by leveraging [grunt-shell npm package](https://www.npmjs.org/package/grunt-shell). Therefore, compilation and packaging steps are dependent on your local installation of javac and jar tools. Source code directories must be located under java/src directory and any jar dependencies under java/lib directory. See Gruntfile.js shell task for more details.
 
 Note: Since javac requires to know where .java files are located, it is required to include java callout separated by spaces in shell javaCompile target. 
