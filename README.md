@@ -32,6 +32,7 @@
 * Grunt is perfect for adding those custom tasks in a heartbeat
 * Pure JavaScript and Node.js. Enough said right :-)
 * Compresses Node.js (node_modules, resources, and public directories)
+* Support of JavaCallout Policies. Compiles, package and include Java library dependencies.
 * Compatible with all CI tools Jenkins, Bamboo, Go, Travis
 * Ready for TDD with Mocha.js and Chai. See test directory.
 * Includes static code analysis with (JSHint)[http://www.jshint.com/] and (ESLint)[http://eslint.org/]
@@ -85,6 +86,13 @@ https://{org-env}.apigee.net/{api-basepath}/tree.jpg
 ```
 
 Example ```https://testmyapi-test.apigee.net/weathergrunt/tree.jpg```
+
+##### Use apigee gateway leveraging a JavaCallout policy
+```
+https://{org-env}.apigee.net/{api-basepath}/javacallout
+```
+
+Example ```curl https://testmyapi-test.apigee.net/weathergrunt/javacallout```
 
 #### execute end-to-end lifecycle and keep last revision (increases revision id)
 ```grunt --env=test --username=$ae_username --password=$ae_password --debug --keep-last-revision=true```
@@ -151,6 +159,17 @@ See apigee-config.js file.
 Node.js Deployment
 ====
 In order to compress node.js modules, it's required node directory to exist in the root folder. By default node_modules, public, and resources are generated as part of the build. Compress configuration in Gruntfile.js can be modified to include any other configuration.
+
+JavaCallout Policy Support
+====
+JavaCallouts are currently supported by leveraging [grunt-shell npm package](https://www.npmjs.org/package/grunt-shell). Therefore, compilation and packaging steps are dependent on your local installation of javac and jar tools. Source code directories must be located under java/src directory and any jar dependencies under java/lib directory. See Gruntfile.js shell task for more details.
+
+Note: Since javac requires to know where .java files are located, it is required to include java callout separated by spaces in shell javaCompile target. 
+
+For instance:
+```
+javac -sourcepath ./java/src/**/*.java -d ./target/java/bin -cp java/lib/expressions-1.0.0.jar:java/lib/message-flow-1.0.0.jar:jar:java/lib/message-flow-1.0.1.jar **java/src/com/example/SimpleJavaCallout.java**
+```     
 
 Search and Replace Functionality
 =====

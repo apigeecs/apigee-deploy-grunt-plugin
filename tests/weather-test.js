@@ -60,4 +60,16 @@ chai.use(chaiHttp);
          done()
     })
 
+    describe('you should be able to make a call to resource which executes a JavaCallout', function() {
+      it('with a response "Payload set by a Java Callout"', function(done) {
+        chai.request('https://testmyapi-test.apigee.net/weathergrunt')
+          .get('/javacallout')
+          .res(function (res) {
+            //expect(res.content).to.contain('Weather for Cali')
+            expect(res.text).to.contain('Payload set by a Java Callout')
+            done();
+          });        
+      })
+    })    
+
   });

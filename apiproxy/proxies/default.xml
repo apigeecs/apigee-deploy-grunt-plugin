@@ -34,7 +34,19 @@
                 </Step>
             </Response>
             <Condition>(proxy.pathsuffix MatchesPath &quot;/images/**&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>
+        <Flow name="SimpleJavaCallout">
+            <Description/>
+            <Request/>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>SimpleJavaCallout</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/javacallout&quot;) and (request.verb = &quot;GET&quot;)</Condition>
         </Flow>        
+              
     </Flows>
     <PreFlow name="PreFlow">
         <Request/>
