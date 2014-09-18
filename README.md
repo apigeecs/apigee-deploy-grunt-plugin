@@ -13,6 +13,7 @@
       - [builds zip bundle under target directory](#builds-zip-bundle-under-target-directory)
       - [check all tasks available](#check-all-tasks-available)
 - [Node.js Deployment](#nodejs-deployment)
+- [JavaCallout Policy Support](#javacallout-policy-support)
 - [Search and Replace Functionality](#search-and-replace-functionality)
 - [Continuous Integration with Jenkins](#continuous-integration-with-jenkins)
 - [API Static Code Analysis](#api-static-code-analysis)
