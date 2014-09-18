@@ -2,12 +2,10 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
-- [Why do we need another tool to manage the API Development Lifecycle?](#why-do-we-need-another-tool-to-manage-the-api-development-lifecycle)
-- [Directions to setup Grunt for an Apigee API Bundle](#directions-to-setup-grunt-for-an-apigee-api-bundle)
+- [Why do we need another tool to manage the API Development Lifecycle for Apigee?](#why-do-we-need-another-tool-to-manage-the-api-development-lifecycle-for-apigee)
+- [Steps to get started](#steps-to-get-started)
 - [Supported tasks](#supported-tasks)
       - [execute end-to-end lifecycle and overwrite revision (keep the same revision id)](#execute-end-to-end-lifecycle-and-overwrite-revision-keep-the-same-revision-id)
-        - [Use apigee gateway calling Yahoo Weather through Apigee Node.js as Target](#use-apigee-gateway-calling-yahoo-weather-through-apigee-nodejs-as-target)
-        - [Use apigee gateway retrieving static content through Node.js as Target (nested folder)](#use-apigee-gateway-retrieving-static-content-through-nodejs-as-target-nested-folder)
       - [get all deployed api revisions](#get-all-deployed-api-revisions)
       - [undeploy api revision](#undeploy-api-revision)
       - [import API bundle without deploying it](#import-api-bundle-without-deploying-it)
@@ -15,6 +13,7 @@
       - [builds zip bundle under target directory](#builds-zip-bundle-under-target-directory)
       - [check all tasks available](#check-all-tasks-available)
 - [Node.js Deployment](#nodejs-deployment)
+- [Search and Replace Functionality](#search-and-replace-functionality)
 - [Continuous Integration with Jenkins](#continuous-integration-with-jenkins)
 - [API Static Code Analysis](#api-static-code-analysis)
   - [JSHint](#jshint)
@@ -25,28 +24,27 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
-# Why do we need another tool to manage the API Development Lifecycle?
+# Why do we need another tool to manage the API Development Lifecycle for Apigee?
 
 * Shell scripts are good for small tasks, but they can become too complex to maintain and reuse as your API tasks grows. And Java, writing Maven plugins is no fun.
 * Pluggable environment (thousands of npm and grunt modules and plugins)
-* Grunt is perfect for adding those custom tasks in a heartbeat
+* Grunt is perfect for adding those custom tasks in a heartbeat. See [Tasks directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tasks)
 * Pure JavaScript and Node.js. Enough said right :-)
 * Compresses Node.js (node_modules, resources, and public directories)
 * Compatible with all CI tools Jenkins, Bamboo, Go, Travis
-* Ready for TDD with Mocha.js and Chai. See test directory.
-* Includes static code analysis with (JSHint)[http://www.jshint.com/] and (ESLint)[http://eslint.org/]
-* Easier to troubleshoot. cURL command support. using ```--curl=true```
-* Search and replace files content with RegEx or string patterns
-* It's Compatible with Maven. See tools to enable Proxy Dependency Maven Plugin
+* Ready for TDD with Mocha.js and Chai. See [tests directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tests).
+* Includes static code analysis with [JSHint](http://www.jshint.com/) and [ESLint](http://eslint.org/)
+* Easier to troubleshoot. cURL command support. Just pass ```--curl=true```
+* Search and replace files content with RegEx, string patterns, or XPath. See string-replace and xmlpoke tasks in Gruntfile.js
+* It's Compatible with Maven. See tools to enable Proxy Dependency Maven Plugin. See pom.xml under [Tools directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tests)
 
-# Directions to setup Grunt for an Apigee API Bundle
+# Steps to get started
 
-- [ ] setup Apigee Edge credentials as environment variables ae_username and ae_password.
-- [ ] install [grunt cli](http://gruntjs.com/getting-started#installing-the-cli) ```sudo npm install grunt-cli -g```
-- [ ] execute ```npm install``` to install all grunt dependencies
-- [ ] add environments to Gruntfile.js under apigee_profiles config
-- [ ] setup profiles element in apigee-config.js for each environment. Each environment will be referenced below as a flag e.g. --env={test, prod}
-- [ ] setup config element in apigee-config.js for string replacements for each file
+* **Step 1:**  setup Apigee Edge credentials as system environment variables ae_username and ae_password or just pass credentials as arguments
+* **Step 2:** install [grunt cli](http://gruntjs.com/getting-started#installing-the-cli) ```sudo npm install grunt-cli -g```
+* **Step 3:** execute ```npm install``` to install all grunt dependencies
+* **Step 4:** setup profiles element in apigee-config.js for each environment. Each environment will be referenced below as a flag e.g. --env={test, prod}
+* **Step 5:** setup config element in apigee-config.js for string replacements for each file
 
 # Supported tasks
 
@@ -154,7 +152,7 @@ In order to compress node.js modules, it's required node directory to exist in t
 
 Search and Replace Functionality
 =====
-Ability to search and replace strings from text files that match any pattern in Regex or string. See conf/search-and-replace-files.js to setup per environment.
+Ability to search and replace strings from text files that match any pattern in Regex or string. See conf/search-and-replace-files.js to setup per environment. This task leverages [grunt-string-replace module](https://www.npmjs.org/package/grunt-string-replace). See conf/search-and-replace-files.js for an example.
 
 Continuous Integration with Jenkins
 ======
@@ -162,7 +160,7 @@ Continuous Integration with Jenkins
 
 API Static Code Analysis
 ========
-This plugin is enabled to provide feedback about coding best practices. 
+This plugin is enabled to provide feedback about coding best practices for JavaScript.
 
 JSHint
 --------
@@ -171,7 +169,7 @@ See jshint task in Gruntfile.js
 
 ESHint
 --------
-ESLint provides an pluggable framework to enable static code analysis. In contrast to JSHint, ESLint can be extended to write custom API specific rules. See conf/rules/if-curly-formatting.js rule.  
+ESLint provides an pluggable framework to enable static code analysis. In contrast to JSHint, ESLint can be extended to write custom API specific rules. See conf/rules/if-curly-formatting.js rule and conf/eslint.json to manage alerts.
 See ESLint Gruntfile.js section
 
 Reusability of code with Maven Plugins and shell scripts/command line tools
