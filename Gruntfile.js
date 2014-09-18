@@ -57,15 +57,6 @@ module.exports = function(grunt) {
 							},[
 								{expand: true, cwd: './node/resources/', src: ['**'], dest: 'resources/' }, // makes all src relative to cwd
 							]),
-			javaCallouts: {
-				options: {
-					mode : 'zip',
-					archive: './target/apiproxy/resources/java/javaCallouts.jar'
-				},
-				files: [
-					{expand: true, cwd: 'target/java/bin', src: ['**'], dest: '' }, // makes all src relative to cwd
-					]
-				},
 			main: {
 				options: {
 					mode : 'zip',
