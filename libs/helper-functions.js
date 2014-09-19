@@ -9,7 +9,7 @@ exports.generatecURL = function(options){
 	console.log(curl.cmd(optionsl, {ssl: true, verbose: true}));
 }
 
-exports.setNodeResources = function(options, files){
+exports.setNodeResources = function(dir, options, files){
 	var fs = require('fs');	
 	var task = {};
 	if (fs.existsSync('./node')) {

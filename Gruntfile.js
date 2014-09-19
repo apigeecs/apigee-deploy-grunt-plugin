@@ -38,20 +38,20 @@ module.exports = function(grunt) {
 			},
 		// make a zipfile
 		compress: {
-			node_modules: helper.setNodeResources({
+			node_modules: helper.setNodeResources('./node/node_modules/' ,{
 									mode : 'zip',
 									archive: './target/apiproxy/resources/node/node_modules.zip'
 								}, [
 								{expand: true, cwd: './node/node_modules/', src: ['**'], dest: 'node_modules/' } // makes all src relative to cwd
 								]),
-			node_public: helper.setNodeResources({
+			node_public: helper.setNodeResources('./node/public/', {
 								mode : 'zip',
 								archive: './target/apiproxy/resources/node/public.zip'
 							},[
 								{expand: true, cwd: './node/public/', src: ['**'], dest: 'public/' }, // makes all src relative to cwd
 							]),
 
-			node_resources: helper.setNodeResources({
+			node_resources: helper.setNodeResources('./node/resources/', {
 								mode : 'zip',
 								archive: './target/apiproxy/resources/node/resources.zip'
 							},[
