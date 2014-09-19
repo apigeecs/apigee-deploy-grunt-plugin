@@ -4,7 +4,7 @@ exports.searchAndReplaceFiles = function(env){
 		    files: [{
 		      expand: true,
 		      cwd: 'target/',
-		      src: '**/*.xml',
+		      src: '**/*.js',
 		      dest: 'target/'
 		    }],
 		    options: {
@@ -23,7 +23,7 @@ exports.searchAndReplaceFiles = function(env){
 		    files: [{
 		      expand: true,
 		      cwd: 'target/',
-		      src: '**/*.xml',
+		      src: '**/*.js',
 		      dest: 'target/'
 		    }],
 		    options: {
