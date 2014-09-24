@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "less-middleware": "0.1.12",
     "path": "^0.4.9"
   }
 }

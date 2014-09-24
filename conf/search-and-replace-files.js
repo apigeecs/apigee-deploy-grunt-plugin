@@ -1,10 +1,10 @@
 exports.searchAndReplaceFiles = function(env){
-		var config = {			
+		var config = {
 		  test: {
 		    files: [{
 		      expand: true,
 		      cwd: 'target/',
-		      src: '**/*.js',
+		      src: ['**/*.js','!node/node_modules/**/*.js'],
 		      dest: 'target/'
 		    }],
 		    options: {
@@ -23,7 +23,7 @@ exports.searchAndReplaceFiles = function(env){
 		    files: [{
 		      expand: true,
 		      cwd: 'target/',
-		      src: '**/*.js',
+		      src: ['**/*.js','!node/node_modules/**/*.js'],
 		      dest: 'target/'
 		    }],
 		    options: {
