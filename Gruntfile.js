@@ -19,43 +19,48 @@ module.exports = function(grunt) {
 				},
 			},
 			copy: {
-				java_jar : {
+				"java-jar" : {
 						src: ['java/lib/*.jar', '!java/lib/expressions-1.0.0.jar', '!java/lib/message-flow-1.0.0.jar'],
 						dest: 'target/apiproxy/resources/java/', filter: 'isFile', flatten: true, expand : true,
 				},
-				main: {
-					files : [{
-						src: 'apiproxy/**',
-						dest: 'target/',
-					},
-					{
-						expand : true,
-						src: './node/*',
-						dest: './target/apiproxy/resources/node/', filter: 'isFile', flatten: true
-					},
+				apiproxy: {
+					files : [
+						{
+							src: 'apiproxy/**',
+							dest: './target/',
+						},
 					]
-				}
+				},
+				"node-target": { // copy node folder to target for search and replace
+							src: './node/**',
+							dest: './target/'
+				},
+				"node-js-root": { //copy app.js and package.json
+								expand : true,
+								src: './target/node/*',
+								dest: './target/apiproxy/resources/node/', filter: 'isFile', flatten: true
+					},
 			},
 		// make a zipfile
 		compress: {
-			node_modules: helper.setNodeResources('./node/node_modules/' ,{
+			"node-modules": helper.setNodeResources('./target/node/node_modules/' ,{
 									mode : 'zip',
 									archive: './target/apiproxy/resources/node/node_modules.zip'
 								}, [
-								{expand: true, cwd: './node/node_modules/', src: ['**'], dest: 'node_modules/' } // makes all src relative to cwd
+								{expand: true, cwd: './target/node/node_modules/', src: ['**'], dest: 'node_modules/' } // makes all src relative to cwd
 								]),
-			node_public: helper.setNodeResources('./node/public/', {
+			"node-public": helper.setNodeResources('./target/node/public/', {
 								mode : 'zip',
 								archive: './target/apiproxy/resources/node/public.zip'
 							},[
-								{expand: true, cwd: './node/public/', src: ['**'], dest: 'public/' }, // makes all src relative to cwd
+								{expand: true, cwd: './target/node/public/', src: ['**'], dest: 'public/' }, // makes all src relative to cwd
 							]),
 
-			node_resources: helper.setNodeResources('./node/resources/', {
+			"node-resources": helper.setNodeResources('./target/node/resources/', {
 								mode : 'zip',
 								archive: './target/apiproxy/resources/node/resources.zip'
 							},[
-								{expand: true, cwd: './node/resources/', src: ['**'], dest: 'resources/' }, // makes all src relative to cwd
+								{expand: true, cwd: './target/node/resources/', src: ['**'], dest: 'resources/' }, // makes all src relative to cwd
 							]),
 			main: {
 				options: {
@@ -119,10 +124,11 @@ module.exports = function(grunt) {
 	        // javaJar : {
 	        //     command: 'jar cvf target/apiproxy/resources/java/javaCallouts.jar -C target/java/bin .',
 	        // },
-	    }
+	    },
+
 	})
 
-grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['jshint', 'eslint', 'clean', 'mkdir','copy', 'xmlpoke', 'string-replace', 'shell' ,'compress']);
+grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['jshint', 'eslint', 'clean', 'mkdir','copy', 'xmlpoke', 'string-replace','shell' ,'compress']);
 	//delete and then import revision keeping same id
 	grunt.registerTask('default', [ 'buildApiBundle', 'getDeployedApiRevisions', 'undeployApiRevision',
 		'deleteApiRevision', 'importApiBundle', 'deployApiRevision', 'executeTests']);
