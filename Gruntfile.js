@@ -24,12 +24,8 @@ module.exports = function(grunt) {
 						dest: 'target/apiproxy/resources/java/', filter: 'isFile', flatten: true, expand : true,
 				},
 				apiproxy: {
-					files : [
-						{
 							src: 'apiproxy/**',
 							dest: './target/',
-						},
-					]
 				},
 				"node-target": { // copy node folder to target for search and replace
 							src: './node/**',
