@@ -1,6 +1,7 @@
 /*jslint node: true */
 
 module.exports = function(grunt) {
+	"use strict";
 	var apigee_conf = require('./apigee-config.js')
 	var helper = require('./libs/helper-functions.js');
 	var searchNReplace = require('./conf/search-and-replace-files.js');
@@ -10,6 +11,9 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		apigee_profiles : apigee_conf.profiles(grunt),//{
+		    availabletasks: {
+		        tasks: {}
+		    },
 			clean: ["target"],
 			mkdir: {
 				all: {

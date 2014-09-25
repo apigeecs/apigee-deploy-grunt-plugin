@@ -125,11 +125,11 @@ See apigee-config.js file.
 ```grunt clean --env=test```
 
 #### check all tasks available
-```grunt --help```
+```grunt --help``` or ```grunt availabletasks --env=test``` will display a nicer colored output.
 
-#### supported arguments and flags 
-``` 
---username={apigee_edge_username} 
+#### supported arguments and flags
+```
+--username={apigee_edge_username}
 ```
 
 ```
@@ -146,7 +146,7 @@ See apigee-config.js file.
 
 ```
 --curl generate curl commands to be executed from command line
-``` 
+```
 
 ```
 --override
@@ -166,12 +166,12 @@ This task comes disabled by default to prevent issues from OS environments (MacO
 
 JavaCallouts are currently supported by leveraging [grunt-shell npm package](https://www.npmjs.org/package/grunt-shell). Therefore, compilation and packaging steps are dependent on your local installation of javac and jar tools. Source code directories must be located under java/src directory and any jar dependencies under java/lib directory. See Gruntfile.js shell task for more details.
 
-Note: Since javac requires to know where .java files are located, it is required to include java callout separated by spaces in shell javaCompile target. 
+Note: Since javac requires to know where .java files are located, it is required to include java callout separated by spaces in shell javaCompile target.
 
 For instance:
 ```
 javac -sourcepath ./java/src/**/*.java -d ./target/java/bin -cp java/lib/expressions-1.0.0.jar:java/lib/message-flow-1.0.0.jar:jar:java/lib/message-flow-1.0.1.jar **java/src/com/example/SimpleJavaCallout.java**
-```     
+```
 
 Search and Replace Functionality
 =====

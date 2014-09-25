@@ -11,6 +11,7 @@ chai.use(chaiHttp);
 
 
   describe('ForecastWeather Public API Test', function() {
+    "use strict";
 
     var options = {}
 
