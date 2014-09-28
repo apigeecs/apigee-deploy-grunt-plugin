@@ -1,0 +1,12 @@
+					<!-- ADDED DYNAMICALLY BY SEARCH-REPLACE -->
+					<Step>
+						<Name>XMLtoJSON-Common</Name>
+					</Step>
+					<Step>
+						<Condition>(request.header.Accept == "text/xml;charset=UTF-8")</Condition>
+						<Name>JSON-to-XML</Name>
+					</Step>
+	                <Step>
+	                    <FaultRules/>
+	                    <Name>Script-External-Variables</Name>
+	                </Step>
