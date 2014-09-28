@@ -21,14 +21,17 @@ https://github.com/dzuluaga/apigee-tutorials/tree/common/
 .
 ├── README.md
 └── apiproxy
+    ├── README.md
     ├── policies
-    │   └── Test-Step-From-Common.xml
+    │   ├── JSON-to-XML.xml
+    │   ├── Script-External-Variables.xml
+    │   └── XMLtoJSON-Common.xml
     ├── proxies
-    │   └── proxies-common.xml
-    ├── resources
-    │   └── jsc
-    │       └── js-common.js
-    └── targets
+    │   └── xmltojson-js-steps-common-frag.xml
+    └── resources
+        └── jsc
+            ├── js-common.js
+            └── js_external_vars.js
 ```
 
 #####Step 4: Commit and push any changes to common branch.
