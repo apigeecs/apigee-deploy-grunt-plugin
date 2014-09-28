@@ -107,7 +107,7 @@ module.exports = function(grunt) {
 	            config: 'conf/eslint.json',     // custom config
 	            rulesdir: ['conf/rules']        // custom rules
 	        },
-	        target: ['Gruntfile.js', 'apiproxy/**/*.js', 'tests/**/*.js', 'tasks/*.js']                 // array of files
+	        target: ['Gruntfile.js', 'target/apiproxy/**/*.js', 'tests/**/*.js', 'tasks/*.js']                 // array of files
 	    },
 		'string-replace': {
 			dist : searchNReplace.searchAndReplaceFiles(apigee_conf.profiles(grunt).env)
@@ -128,7 +128,7 @@ module.exports = function(grunt) {
 
 	})
 
-grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['jshint', 'eslint', 'clean', 'mkdir','copy', 'xmlpoke', 'string-replace','shell' ,'compress']);
+grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['clean', 'mkdir','copy', 'xmlpoke', 'string-replace', 'jshint', 'eslint', 'shell' ,'compress']);
 	//delete and then import revision keeping same id
 	grunt.registerTask('default', [ 'buildApiBundle', 'getDeployedApiRevisions', 'undeployApiRevision',
 		'deleteApiRevision', 'importApiBundle', 'deployApiRevision', 'executeTests']);

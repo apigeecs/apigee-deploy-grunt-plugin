@@ -176,8 +176,13 @@ javac -sourcepath ./java/src/**/*.java -d ./target/java/bin -cp java/lib/express
 ```
 
 Search and Replace Functionality
-=====
+======
+
+####String
 Ability to search and replace strings from text files that match any pattern in Regex or string. See conf/search-and-replace-files.js to setup per environment. This task leverages [grunt-string-replace module](https://www.npmjs.org/package/grunt-string-replace). See conf/search-and-replace-files.js for an example.
+
+####Include files from common Git submodule
+Ability to search and include content from files is also provided by string-replace task. See examples under conf/search-and-replace-files.js that include fragments from common folder for fragments (multiple steps), policies, and JavaScript files. Note common folder leverages [Git Submodule](http://git-scm.com/book/en/Git-Tools-Submodules), which resides in a separate branch under the same repository. This allows reusing code across multiple APIs without adding more complexity.
 
 Continuous Integration with Jenkins
 ======

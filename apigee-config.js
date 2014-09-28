@@ -45,7 +45,7 @@ exports.config = function(env){
 			"files": {
 				"target/apiproxy/proxies/default.xml": "apiproxy/proxies/default.xml"
 			}
-		}   		       
+		}
 		],
 	 "prod" : [
 		{
@@ -65,7 +65,7 @@ exports.config = function(env){
 			"files": {
 				"target/apiproxy/proxies/default.xml": "apiproxy/proxies/default.xml"
 			}
-		}         
+		}
 		]}
-		return config[env]		
+		return config[env]
 }
