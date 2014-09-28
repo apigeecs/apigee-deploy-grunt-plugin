@@ -6,10 +6,7 @@
             <Description/>
             <Request/>
             <Response>
-                <Step>
-                    <FaultRules/>
-                    <Name>xmltojson-1</Name>
-                </Step>
+@@EXAMPLE-STEP-COMMON-XML-TO-JSON-GIT-SUBMODULE-FRAGMENT#1
             </Response>
             <Condition>(proxy.pathsuffix MatchesPath &quot;/apigee/**&quot;) and (request.verb = &quot;GET&quot;)</Condition>
         </Flow>
@@ -17,21 +14,15 @@
             <Description/>
             <Request/>
             <Response>
-                <Step>
-                    <FaultRules/>
-                    <Name>xmltojson-1</Name>
-                </Step>
+@@EXAMPLE-STEP-COMMON-XML-TO-JSON-GIT-SUBMODULE-FRAGMENT#2
             </Response>
             <Condition>(proxy.pathsuffix MatchesPath &quot;/forecastweather_node/**&quot;) and (request.verb = &quot;GET&quot;)</Condition>
-        </Flow>           
+        </Flow>
         <Flow name="node">
             <Description/>
             <Request/>
             <Response>
-                <Step>
-                    <FaultRules/>
-                    <Name>xmltojson-1</Name>
-                </Step>
+@@EXAMPLE-STEP-COMMON-XML-TO-JSON-GIT-SUBMODULE-FRAGMENT#3
             </Response>
             <Condition>(proxy.pathsuffix MatchesPath &quot;/images/**&quot;) and (request.verb = &quot;GET&quot;)</Condition>
         </Flow>
@@ -46,8 +37,7 @@
                 </Step> -->
             </Response>
             <Condition>(proxy.pathsuffix MatchesPath &quot;/javacallout&quot;) and (request.verb = &quot;GET&quot;)</Condition>
-        </Flow>        
-              
+        </Flow>
     </Flows>
     <PreFlow name="PreFlow">
         <Request/>
@@ -65,7 +55,7 @@
     <!-- <RouteRule name="NoRoute"></RouteRule> -->
     <RouteRule name="node">
         <TargetEndpoint>node</TargetEndpoint>
-    </RouteRule>    
+    </RouteRule>
     <PostFlow name="PostFlow">
         <Request/>
         <Response/>
