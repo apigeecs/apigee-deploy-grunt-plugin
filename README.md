@@ -38,6 +38,8 @@
 * Includes static code analysis with [JSHint](http://www.jshint.com/) and [ESLint](http://eslint.org/)
 * Easier to troubleshoot. cURL command support. Just pass ```--curl=true```
 * Search and replace files content with RegEx, string patterns, or XPath. See string-replace and xmlpoke tasks in Gruntfile.js
+* Include files dynamically from common git submodule to promote DRY (Don't Repeat Yourself) principle (check search-and-replace.js entries)
+* Compatible with IDEs. See [Chrome Grunt Dev Tools](https://chrome.google.com/webstore/detail/grunt-devtools/fbiodiodggnlakggeeckkjccjhhjndnb?hl=en) and [Grunt Task Runner for Web Storm](http://www.jetbrains.com/webstorm/webhelp/using-grunt-task-runner.html)
 * It's Compatible with Maven. See tools to enable Proxy Dependency Maven Plugin. See pom.xml under [Tools directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tests)
 
 # Steps to get started
@@ -201,6 +203,16 @@ Grunt plugin can be extended to support plugins, shell script or any other comma
 
 Contributing
 =====
-If you would like to contribute, simply fork the repository, push your changes to a branch and send a pull request.
+If you would like to contribute, simply fork the repository, push your changes to a branch and send a pull request:
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
 
 Typo fixes, improvements to grammar or readability, it's all welcome.
+
+## License
+
+Copyright (c) 2014 Diego Zuluaga (twitter: @dzuluaga)
+Licensed under the MIT license.
