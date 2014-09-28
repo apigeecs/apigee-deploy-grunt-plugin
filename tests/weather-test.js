@@ -32,6 +32,25 @@ chai.use(chaiHttp);
 
     })
 
+    it('you should be able to get forecast weather for Sunnyvale-CA from this API Proxy in text/xml;charset=UTF-8.', function(done) {
+
+       options = {
+          url: 'https://testmyapi-test.apigee.net/weathergrunt/apigee/forecastrss?w=2502265',
+            headers: {
+                'User-Agent': 'request',
+                'Accept' : 'text/xml;charset=UTF-8'
+            }
+       }
+
+        request(options, function (error, response, body) {
+            expect(body).to.contain('Sunnyvale')
+            assert.equal(200, response.statusCode)
+            expect(response).to.have.header('content-type', 'text/xml;charset=UTF-8');
+            done()
+        })
+
+    })
+
     it('you should be able to get forecast weather for Cali-Colombia from this API Proxy via a Node.js Target', function(done) {
        options = {
           url: 'https://testmyapi-test.apigee.net/weathergrunt/forecastweather_node/368149',
