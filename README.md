@@ -37,11 +37,11 @@ git commit -am 'common branch'
 git push --set-upstream origin common
 ```
 
-#####Step 4: Switch to an API or master branch
+#####Step 5: Switch to an API or master branch
 ```git checkout master```
 
 **The following steps provide an example of an api proxy enabled with a git Submodule that resides in common branch**
-#####Step 5: Create a Git Submodule within the current folder
+#####Step 6: Create a Git Submodule within the current folder
 
 ```git submodule add git@github.com:dzuluaga/apigee-tutorials.git common```
 
@@ -50,10 +50,10 @@ See an [example of a API proxy with a Git submodule](https://github.com/dzuluaga
 ![Common submodule](https://www.dropbox.com/s/1amtrtkolv37da1/common_github.png?dl=1 "Common submodule")
 
 
-#####Step 6: Switch to the branch within the common folder
+#####Step 7: Switch to the branch within the common folder
 ```git checkout common```
 
-#####Step 7: Commit and push changes to master branch
+#####Step 8: Commit and push changes to master branch
 ```
 git commit -am 'include common to api'
 git push
@@ -65,5 +65,5 @@ git submodule init
 git submodule update
 ```
 
-#####Step 8: Enable Apigee Grunt.js Deploy plugin to include, and replace fragments from common Git submodule - TODO
+#####Step 9: Enable Apigee Grunt.js Deploy plugin to include, and replace fragments from common Git submodule - TODO
 [String-replace task in Gruntfile.js](https://github.com/apigeecs/apigee-deploy-grunt-plugin/blob/master/Gruntfile.js#L112) can be configured to manage these replacements by configuring it according to [String Replace NPM Module](https://www.npmjs.org/package/grunt-string-replace#simple-inline-content).
