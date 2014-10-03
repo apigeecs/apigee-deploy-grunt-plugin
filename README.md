@@ -43,19 +43,30 @@
 * It's Compatible with Maven. See tools to enable Proxy Dependency Maven Plugin. See pom.xml under [Tools directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tests)
 
 # Steps to get started
+**Prerequisites: Node.js and NPM**
+**Optional tools: Git. You can still use this plugin without Git, however manual steps will be required to initialize common folder.**
 
-* **Step 1:**  setup Apigee Edge credentials as system environment variables ae_username and ae_password or just pass credentials as arguments
-* **Step 2:** install [grunt cli](http://gruntjs.com/getting-started#installing-the-cli) ```sudo npm install grunt-cli -g```
-* **Step 3:** execute ```npm install``` to install all grunt dependencies
+* **Step 1:** Clone this repo with Git. If you don't have Git is installed, download this repo as a zip file and expand it somewhere in the filesytem.
+* **Step 2:** open apigee-deploy-grunt-plugin folder and execute the two commands:
+```
+git submodule init
+git submodule update
+
+```
+**These two commands initialize Git Submodules by downloading source to Common folder from common branch. Installation without Git requires to download common branch as a zip file and expand its content into common folder (common/apiproxy)**
+
+* **Step 3:**  setup Apigee Edge credentials as system environment variables ae_username and ae_password or just pass credentials as arguments
+* **Step 4:** install [grunt cli](http://gruntjs.com/getting-started#installing-the-cli) ```sudo npm install grunt-cli -g```
+* **Step 5:** execute ```npm install``` to install all grunt dependencies
 * **Step 4:** setup profiles element in apigee-config.js for each environment. Each environment will be referenced below as a flag e.g. --env={test, prod}
-* **Step 5:** setup config element in apigee-config.js for string replacements for each file
+* **Step 6:** setup config element in apigee-config.js for string replacements for each environment.
 
 # Supported tasks
 
 #### execute end-to-end lifecycle and overwrite revision (keep the same revision id)
-```grunt --env=test --username=$ae_username --password=$ae_password --debug --curl=true```
+```grunt --env=test --username={apigee_edge_email_address} --password={apigee_edge_password} --debug --curl=true```
 
-**Note: debug flag to includes API responses.**
+**Note: Pass --debug flag to display Management API responses.**
 
 #### Test what you just deployed
 Once previous is executed, you should be able to try the following calls:
