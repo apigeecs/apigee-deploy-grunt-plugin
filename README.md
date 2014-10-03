@@ -25,9 +25,8 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
-# Why do we need another tool to manage the API Development Lifecycle for Apigee?
+# Why do we need a tool to manage the API Development Lifecycle for Apigee?
 
-* Shell scripts are good for small tasks, but they can become too complex to maintain and reuse as your API tasks grows. And Java, writing Maven plugins is no fun.
 * Pluggable environment (thousands of npm and grunt modules and plugins)
 * Grunt is perfect for adding those custom tasks in a heartbeat. See [Tasks directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tasks)
 * Pure JavaScript and Node.js. Enough said right :-)
