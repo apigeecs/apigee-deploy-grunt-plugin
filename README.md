@@ -219,6 +219,7 @@ Grunt plugin can be extended to support plugins, shell script or any other comma
 Contributing
 =====
 If you would like to contribute, simply fork the repository, push your changes to a branch and send a pull request:
+
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
