@@ -30,14 +30,14 @@
 * Pluggable environment (thousands of npm and grunt modules and plugins)
 * Grunt is perfect for adding those custom tasks in a heartbeat. See [Tasks directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tasks)
 * Pure JavaScript and Node.js. Enough said right :-)
-* Compresses Node.js (node_modules, resources, and public directories)
+* Deploys Node.js API Proxies (node_modules, resources, and public directories) see (Gruntfile.js compress task)[https://github.com/apigeecs/apigee-deploy-grunt-plugin/blob/master/Gruntfile.js]
 * Support of JavaCallout Policies. Compiles, package and include Java library dependencies.
-* Compatible with all CI tools Jenkins, Bamboo, Go, Travis
 * Ready for TDD with Mocha.js and Chai. See [tests directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tests).
 * Includes static code analysis with [JSHint](http://www.jshint.com/) and [ESLint](http://eslint.org/)
 * Easier to troubleshoot. cURL command support. Just pass ```--curl=true```
 * Search and replace files content with RegEx, string patterns, or XPath. See string-replace and xmlpoke tasks in Gruntfile.js
 * Include files dynamically from common git submodule to promote DRY (Don't Repeat Yourself) principle (check search-and-replace.js entries)
+* Compatible with all CI tools Jenkins, Bamboo, Go, Travis
 * Compatible with IDEs. See [Chrome Grunt Dev Tools](https://chrome.google.com/webstore/detail/grunt-devtools/fbiodiodggnlakggeeckkjccjhhjndnb?hl=en) and [Grunt Task Runner for Web Storm](http://www.jetbrains.com/webstorm/webhelp/using-grunt-task-runner.html)
 * It's Compatible with Maven. See tools to enable Proxy Dependency Maven Plugin. See pom.xml under [Tools directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tests)
 
