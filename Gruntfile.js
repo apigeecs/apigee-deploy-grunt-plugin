@@ -3,7 +3,7 @@
 module.exports = function(grunt) {
 	"use strict";
 	var apigee_conf = require('./grunt/apigee-config.js')
-	var helper = require('./grunt/libs/helper-functions.js');
+	var helper = require('./grunt/lib/helper-functions.js');
 	var searchNReplace = require('./grunt/conf/search-and-replace-files.js');
 
 	require('load-grunt-tasks')(grunt);
