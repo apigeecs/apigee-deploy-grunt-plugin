@@ -2,9 +2,9 @@
 
 module.exports = function(grunt) {
 	"use strict";
-	var apigee_conf = require('./apigee-config.js')
-	var helper = require('./libs/helper-functions.js');
-	var searchNReplace = require('./conf/search-and-replace-files.js');
+	var apigee_conf = require('./grunt/apigee-config.js')
+	var helper = require('./grunt/libs/helper-functions.js');
+	var searchNReplace = require('./grunt/conf/search-and-replace-files.js');
 
 	require('load-grunt-tasks')(grunt);
 	// Project configuration.
@@ -104,8 +104,8 @@ module.exports = function(grunt) {
 		},
 	    eslint: {                               // task
 	    	options: {
-	            config: 'conf/eslint.json',     // custom config
-	            rulesdir: ['conf/rules']        // custom rules
+	            config: 'grunt/conf/eslint.json',     // custom config
+	            rulesdir: ['grunt/conf/rules']        // custom rules
 	        },
 	        target: ['Gruntfile.js', 'target/apiproxy/**/*.js', 'tests/**/*.js', 'tasks/*.js']                 // array of files
 	    },
@@ -133,7 +133,7 @@ grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', [
 	grunt.registerTask('default', [ 'buildApiBundle', 'getDeployedApiRevisions', 'undeployApiRevision',
 		'deleteApiRevision', 'importApiBundle', 'deployApiRevision', 'executeTests']);
 
-	grunt.loadTasks('tasks');
+	grunt.loadTasks('grunt/tasks');
 	if(grunt.option.flags().indexOf('--help') === -1 && !apigee_conf.profiles(grunt).env) {
 		grunt.fail.fatal('Invalid environment flag --env={env}. Provide environment as argument, see apigee_profiles in Grunfile.js.')
 	}
