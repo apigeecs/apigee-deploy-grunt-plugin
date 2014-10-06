@@ -43,6 +43,7 @@
 
 # Steps to get started
 **Prerequisites: Node.js and NPM**
+
 **Optional tools: Git. You can still use this plugin without Git, however manual steps will be required to initialize common folder.**
 
 * **Step 1:** Clone this repo with Git. If you don't have Git is installed, download this repo as a zip file and expand it somewhere in the filesytem.
@@ -57,8 +58,8 @@ git submodule update
 * **Step 3:**  setup Apigee Edge credentials as system environment variables ae_username and ae_password or just pass credentials as arguments
 * **Step 4:** install [grunt cli](http://gruntjs.com/getting-started#installing-the-cli) ```sudo npm install grunt-cli -g```
 * **Step 5:** execute ```npm install``` to install all grunt dependencies
-* **Step 4:** setup profiles element in apigee-config.js for each environment. Each environment will be referenced below as a flag e.g. --env={test, prod}
-* **Step 6:** setup config element in apigee-config.js for string replacements for each environment.
+* **Step 6:** setup profiles element in apigee-config.js for each environment. Each environment will be referenced below as a flag e.g. --env={test, prod}
+* **Step 7:** setup config element in apigee-config.js for string replacements for each environment.
 
 # Supported tasks
 
