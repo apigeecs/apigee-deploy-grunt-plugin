@@ -59,8 +59,8 @@ git submodule update
 * **Step 3:**  setup Apigee Edge credentials as system environment variables ae_username and ae_password or just pass credentials as arguments
 * **Step 4:** install [grunt cli](http://gruntjs.com/getting-started#installing-the-cli) ```sudo npm install grunt-cli -g```
 * **Step 5:** execute ```npm install``` to install all grunt dependencies
-* **Step 6:** setup profiles element in apigee-config.js for each environment. Each environment will be referenced below as a flag e.g. --env={test, prod}
-* **Step 7:** setup config element in apigee-config.js for string replacements for each environment.
+* **Step 6:** setup profiles element in grunt/apigee-config.js for each environment. Each environment will be referenced below as a flag e.g. --env={test, prod}
+* **Step 7:** setup config element in grunt/apigee-config.js for string replacements for each environment.
 
 # Supported tasks
 
@@ -130,7 +130,7 @@ Example ```curl https://testmyapi-test.apigee.net/weathergrunt/javacallout```
 ```grunt deleteApiRevision:{revision_id} --env=test --debug```
 
 #### configuration management
-See apigee-config.js file.
+See grunt/apigee-config.js file.
 
 #### builds zip bundle under target directory
 ```grunt compress --env=test```
@@ -191,7 +191,7 @@ Search and Replace Functionality
 ======
 
 ####String
-Ability to search and replace strings from text files that match any pattern in Regex or string. See conf/search-and-replace-files.js to setup per environment. This task leverages [grunt-string-replace module](https://www.npmjs.org/package/grunt-string-replace). See conf/search-and-replace-files.js for an example.
+Ability to search and replace strings from text files that match any pattern in Regex or string. See grunt/conf/search-and-replace-files.js to setup per environment. This task leverages [grunt-string-replace module](https://www.npmjs.org/package/grunt-string-replace). See grunt/conf/search-and-replace-files.js for an example.
 
 ####Include files from common Git submodule
 Ability to search and include content from files is also provided by string-replace task. See examples under conf/search-and-replace-files.js that include fragments from common folder for fragments (multiple steps), policies, and JavaScript files. Note common folder leverages [Git Submodule](http://git-scm.com/book/en/Git-Tools-Submodules), which resides in a separate branch under the same repository. This allows reusing code across multiple APIs without adding more complexity.
