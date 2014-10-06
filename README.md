@@ -1,3 +1,4 @@
+![apigee-deploy-grunt-plugin](https://www.dropbox.com/s/pd6rq3kf315qcdk/Apigee%20Deploy%20Grunt%20Plugin%20logo.png?dl=1 "apigee-deploy-grunt-plugin-logo")
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
