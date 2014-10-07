@@ -29,9 +29,9 @@
 # Why do we need a tool to manage the API Development Lifecycle for Apigee?
 
 * Pluggable environment (thousands of npm and grunt modules and plugins)
-* Grunt is perfect for adding those custom tasks in a heartbeat. See [Tasks directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tasks)
+* Grunt is perfect for adding those custom tasks in a heartbeat. See [Tasks directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/grunt/tasks)
 * Pure JavaScript and Node.js. Enough said right :-)
-* Deploys Node.js API Proxies (node_modules, resources, and public directories) see (Gruntfile.js compress task)[https://github.com/apigeecs/apigee-deploy-grunt-plugin/blob/master/Gruntfile.js]
+* Deploys Node.js API Proxies (node_modules, resources, and public directories) see [Gruntfile.js compress task](https://github.com/apigeecs/apigee-deploy-grunt-plugin/blob/master/Gruntfile.js)
 * Support of JavaCallout Policies. Compiles, package and include Java library dependencies.
 * Ready for TDD with Mocha.js and Chai. See [tests directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tests).
 * Includes static code analysis with [JSHint](http://www.jshint.com/) and [ESLint](http://eslint.org/)
