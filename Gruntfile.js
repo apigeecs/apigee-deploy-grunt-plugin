@@ -5,8 +5,8 @@ module.exports = function(grunt) {
 	var apigee_conf = require('./grunt/apigee-config.js')
 	var helper = require('./grunt/lib/helper-functions.js');
 	var searchNReplace = require('./grunt/conf/search-and-replace-files.js');
-
 	require('load-grunt-tasks')(grunt);
+	require('time-grunt')(grunt);
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -43,12 +43,15 @@ module.exports = function(grunt) {
 			},
 		// make a zipfile
 		compress: {
+		/** No longer required as importApiBundle will install npm modules directly via NPM API **/
+		/*
 			"node-modules": helper.setNodeResources('./target/node/node_modules/' ,{
 									mode : 'zip',
 									archive: './target/apiproxy/resources/node/node_modules.zip'
 								}, [
 								{expand: true, cwd: './target/node/node_modules/', src: ['**'], dest: 'node_modules/' } // makes all src relative to cwd
 								]),
+		*/
 			"node-public": helper.setNodeResources('./target/node/public/', {
 								mode : 'zip',
 								archive: './target/apiproxy/resources/node/public.zip'
@@ -125,13 +128,48 @@ module.exports = function(grunt) {
 	        //     command: 'jar cvf target/apiproxy/resources/java/javaCallouts.jar -C target/java/bin .',
 	        // },
 	    },
-
+	    notify: {
+	    	task_name: {
+	    		options: {
+	        	// Task-specific options go here.
+	        }
+		    },
+		    ApiDeployed: {
+		    	options: {
+		    		message: 'Deployment is ready!'
+		    	}
+		    }
+  		},
+        complexity: {
+            generic: {
+                src: ['target/apiproxy/**/*.js', 'tests/**/*.js', 'tasks/*.js'],
+                exclude: ['doNotTest.js'],
+                options: {
+                    breakOnErrors: true,
+                    jsLintXML: 'report.xml',         // create XML JSLint-like report
+                    checkstyleXML: 'checkstyle.xml', // create checkstyle report
+                    errorsOnly: false,               // show only maintainability errors
+                    cyclomatic: [3, 7, 12],          // or optionally a single value, like 3
+                    halstead: [8, 13, 20],           // or optionally a single value, like 8
+                    maintainability: 100,
+                    hideComplexFunctions: false,      // only display maintainability
+                    broadcast: false                 // broadcast data over event-bus
+                }
+            }
+        },
+	    "update_submodules": {
+	        default: {
+	            options: {
+	                // default command line parameters will be used: --init --recursive
+	            }
+	        },
+		},
 	})
 
-grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['clean', 'mkdir','copy', 'xmlpoke', 'string-replace', 'jshint', 'eslint', 'shell' ,'compress']);
+grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['clean', 'mkdir','copy', 'xmlpoke', 'string-replace', 'jshint', 'eslint', 'complexity', 'shell' ,'compress']);
 	//delete and then import revision keeping same id
 	grunt.registerTask('default', [ 'buildApiBundle', 'getDeployedApiRevisions', 'undeployApiRevision',
-		'deleteApiRevision', 'importApiBundle', 'deployApiRevision', 'executeTests']);
+		'deleteApiRevision', 'importApiBundle', 'installNpmRevision', 'deployApiRevision', 'executeTests', 'notify:ApiDeployed']);
 
 	grunt.loadTasks('grunt/tasks');
 	if(grunt.option.flags().indexOf('--help') === -1 && !apigee_conf.profiles(grunt).env) {
