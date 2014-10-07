@@ -157,16 +157,9 @@ module.exports = function(grunt) {
                 }
             }
         },
-	    "update_submodules": {
-	        default: {
-	            options: {
-	                // default command line parameters will be used: --init --recursive
-	            }
-	        },
-		},
 	})
 
-grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['clean', 'mkdir','copy', 'update_submodules', 'xmlpoke', 'string-replace', 'jshint', 'eslint', 'complexity', 'shell' ,'compress']);
+grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['clean', 'mkdir','copy', 'xmlpoke', 'string-replace', 'jshint', 'eslint', 'complexity', 'shell' ,'compress']);
 	//delete and then import revision keeping same id
 	grunt.registerTask('default', [ 'buildApiBundle', 'getDeployedApiRevisions', 'undeployApiRevision',
 		'deleteApiRevision', 'importApiBundle', 'installNpmRevision', 'deployApiRevision', 'executeTests', 'notify:ApiDeployed']);
