@@ -40,7 +40,7 @@
 * Searches and replace files content with RegEx, string patterns, or XPath. See string-replace and xmlpoke tasks in Gruntfile.js
 * Includes files dynamically from common git submodule to promote DRY (Don't Repeat Yourself) principle (check search-and-replace.js entries)
 * It's compatible with most CI tools Jenkins, Bamboo, Go, and Travis
-* Sends automatic destop notifications with [Grunt Notify](https://github.com/dylang/grunt-notify#screenshots)
+* Sends automatic desktop notifications with [Grunt Notify](https://github.com/dylang/grunt-notify#screenshots)
 * It's compatible with IDEs. See [Chrome Grunt Dev Tools](https://chrome.google.com/webstore/detail/grunt-devtools/fbiodiodggnlakggeeckkjccjhhjndnb?hl=en) and [Grunt Task Runner for Web Storm](http://www.jetbrains.com/webstorm/webhelp/using-grunt-task-runner.html)
 * It's Compatible with Maven. See tools to enable Proxy Dependency Maven Plugin. See pom.xml under [Tools directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tests)
 
