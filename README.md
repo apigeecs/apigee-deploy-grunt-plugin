@@ -1,6 +1,7 @@
 ![apigee-deploy-grunt-plugin](https://www.dropbox.com/s/5tgy3fpyud5skhv/Apigee%20Deploy%20Grunt%20Plugin%20logo2.png?dl=1 "apigee-deploy-grunt-plugin-logo")
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
 - [Why do we need another tool to manage the API Development Lifecycle for Apigee?](#why-do-we-need-another-tool-to-manage-the-api-development-lifecycle-for-apigee)
@@ -23,8 +24,11 @@
 - [Reusability of code with Maven Plugins and shell scripts/command line tools](#reusability-of-code-with-maven-plugins-and-shell-scriptscommand-line-tools)
 - [Contributing](#contributing)
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+TL;DR
+====
+Here's a [Slideshare presentation](http://www.slideshare.net/DiegoZuluaga2/apigee-deploy-grunt-plugin10) with the short version to get up and running in a few steps.
 
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # Why do we need a tool to manage the API Development Lifecycle for Apigee?
 
