@@ -69,7 +69,7 @@ git submodule update
 * **Step 6:** execute ```npm install``` to install all grunt dependencies
 * **Step 7:** Edit and add environment to grunt/apigee-config.js file. Each environment will be referenced below as a flag e.g. --env={test, prod}
 * **Step 8:** Edit and add environments to grunt/search-and-replace-files.js for string replacements.
-* **Step 9: run ```grunt --env=test --username={apigee_edge_email_address} --password={apigee_edge_password} --debug```
+* **Step 9:** run ```grunt --env=test --username={apigee_edge_email_address} --password={apigee_edge_password} --debug```
 
 # Supported tasks
 
