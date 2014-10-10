@@ -20,7 +20,7 @@
 - [Continuous Integration with Jenkins](#continuous-integration-with-jenkins)
 - [API Static Code Analysis](#api-static-code-analysis)
   - [JSHint](#jshint)
-  - [ESHint](#eshint)
+  - [ESLint](#eshint)
 - [Reusability of code with Maven Plugins and shell scripts/command line tools](#reusability-of-code-with-maven-plugins-and-shell-scriptscommand-line-tools)
 - [Contributing](#contributing)
 
@@ -215,7 +215,7 @@ JSHint
 JSHInt provides a large set of configurable (options)[http://www.jshint.com/docs/options/] that can be enabled out-of-the-box.
 See jshint task in Gruntfile.js
 
-ESHint
+ESLint
 --------
 ESLint provides an pluggable framework to enable static code analysis. In contrast to JSHint, ESLint can be extended to write custom API specific rules. See conf/rules/if-curly-formatting.js rule and conf/eslint.json to manage alerts.
 See ESLint Gruntfile.js section
