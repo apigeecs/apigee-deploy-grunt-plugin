@@ -55,7 +55,8 @@ Here's a [Slideshare presentation](http://www.slideshare.net/DiegoZuluaga2/apige
 
 * **Step 1:** Clone this repo with Git. ```git clone https://github.com/apigeecs/apigee-deploy-grunt-plugin.git```
 If you don't have Git is installed, download this repo as a zip file and expand it somewhere in the filesytem.
-* **Step 2:** open apigee-deploy-grunt-plugin folder and execute the two commands:
+* **Step 2:** cd apigee-deploy-grunt-plugin
+* **Step 3:** open apigee-deploy-grunt-plugin folder and execute the two commands:
 ```
 git submodule init
 git submodule update
@@ -63,11 +64,11 @@ git submodule update
 ```
 **These two commands initialize Git Submodules by downloading source to Common folder from common branch. Installation without Git requires to download common branch as a zip file and expand its content into common folder (common/apiproxy)**
 
-* **Step 3:**  setup Apigee Edge credentials as system environment variables ae_username and ae_password or just pass credentials as arguments
-* **Step 4:** install [grunt cli](http://gruntjs.com/getting-started#installing-the-cli) ```sudo npm install grunt-cli -g```
-* **Step 5:** execute ```npm install``` to install all grunt dependencies
-* **Step 6:** Edit and add environment to grunt/apigee-config.js file. Each environment will be referenced below as a flag e.g. --env={test, prod}
-* **Step 7:** Edit and add environments to grunt/search-and-replace-files.js for string replacements.
+* **Step 4:**  setup Apigee Edge credentials as system environment variables ae_username and ae_password or just pass credentials as arguments
+* **Step 5:** install [grunt cli](http://gruntjs.com/getting-started#installing-the-cli) ```sudo npm install grunt-cli -g```
+* **Step 6:** execute ```npm install``` to install all grunt dependencies
+* **Step 7:** Edit and add environment to grunt/apigee-config.js file. Each environment will be referenced below as a flag e.g. --env={test, prod}
+* **Step 8:** Edit and add environments to grunt/search-and-replace-files.js for string replacements.
 
 # Supported tasks
 
