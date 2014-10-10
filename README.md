@@ -53,7 +53,8 @@ Here's a [Slideshare presentation](http://www.slideshare.net/DiegoZuluaga2/apige
 
 **Optional tools: Git. You can still use this plugin without Git, however manual steps will be required to initialize common folder.**
 
-* **Step 1:** Clone this repo with Git. If you don't have Git is installed, download this repo as a zip file and expand it somewhere in the filesytem.
+* **Step 1:** Clone this repo with Git. ```git clone https://github.com/apigeecs/apigee-deploy-grunt-plugin.git```
+If you don't have Git is installed, download this repo as a zip file and expand it somewhere in the filesytem.
 * **Step 2:** open apigee-deploy-grunt-plugin folder and execute the two commands:
 ```
 git submodule init
