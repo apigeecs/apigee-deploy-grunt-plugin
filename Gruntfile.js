@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 	"use strict";
 	var apigee_conf = require('./grunt/apigee-config.js')
 	var helper = require('./grunt/lib/helper-functions.js');
-	var searchNReplace = require('./grunt/conf/search-and-replace-files.js');
+	var searchNReplace = require('./grunt/search-and-replace-files.js');
 	require('load-grunt-tasks')(grunt);
 	require('time-grunt')(grunt);
 	// Project configuration.
