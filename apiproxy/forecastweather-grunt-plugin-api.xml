@@ -3,7 +3,7 @@
     <ConfigurationVersion minorVersion="0" majorVersion="4"/>
     <CreatedAt>1384727595303</CreatedAt>
     <CreatedBy>dzuluaga@apigee.com</CreatedBy>
-    <Description>@@gitRevision</Description>
+    <Description>@@FILENAME MUST MATCH apigee-config.js apiproxy</Description>
     <DisplayName>weather</DisplayName>
     <LastModifiedAt>1384727595303</LastModifiedAt>
     <LastModifiedBy>dzuluaga@apigee.com</LastModifiedBy>
