@@ -26,8 +26,18 @@ exports.profiles = function(grunt){
 			}
 }
 
-exports.config = function(env){
+exports.xmlconfig = function(env, grunt){
 	config = { "test" : [
+		{//sets description within API proxy for tracking purposes with this format 'git commit: 8974b5a by dzuluaga on Diegos-MacBook-Pro-2.local'
+		 //see grunt/tasks/saveGitRevision.js for further customization
+			"options": {
+				"xpath": "//APIProxy/Description",
+				"value": "<%= grunt.option('gitRevision') %>"
+			},
+			"files": {
+				"target/apiproxy/<%= apigee_profiles[grunt.option('env')].apiproxy %>.xml": "apiproxy/*.xml"
+			}
+		},
 		{
 			"options": {
 				"xpath": "//TargetEndpoint/HTTPTargetConnection/URL",
@@ -48,6 +58,16 @@ exports.config = function(env){
 		}
 		],
 	 "prod" : [
+		{//sets description within API proxy for tracking purposes with this format 'git commit: 8974b5a by dzuluaga on Diegos-MacBook-Pro-2.local'
+		 //see grunt/tasks/saveGitRevision.js for further customization
+			"options": {
+				"xpath": "//APIProxy/Description",
+				"value": "<%= grunt.option('gitRevision') %>"
+			},
+			"files": {
+				"target/apiproxy/<%= apigee_profiles[grunt.option('env')].apiproxy %>.xml": "apiproxy/*.xml"
+			}
+		},
 		{
 			"options": {
 				"xpath": "//TargetEndpoint/HTTPTargetConnection/URL",
@@ -67,5 +87,6 @@ exports.config = function(env){
 			}
 		}
 		]}
-		return config[env]
+		if(!config[env])grunt.fail.fatal('Environment '+ env +' does not exist under grunt/apigee-config.js')
+		return config[env];
 }

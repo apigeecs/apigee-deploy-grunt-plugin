@@ -5,7 +5,6 @@ module.exports = function(grunt) {
 	var apigee_conf = require('./grunt/apigee-config.js')
 	var helper = require('./grunt/lib/helper-functions.js');
 	var searchNReplace = require('./grunt/search-and-replace-files.js');
-	require('load-grunt-tasks')(grunt);
 	require('time-grunt')(grunt);
 	// Project configuration.
 	grunt.initConfig({
@@ -68,10 +67,7 @@ module.exports = function(grunt) {
 			main: {
 				options: {
 					mode : 'zip',
-					archive: function(){
-						var ap = grunt.config.get("apigee_profiles")
-						return 'target/' + ap[ap.env].apiproxy + ".zip"
-					}
+					archive: "target/<%= apigee_profiles[grunt.option('env')].apiproxy %>.zip"
 				},
 				files: [
 					{expand: true, cwd: 'target/apiproxy/', src: ['**'], dest: 'apiproxy/' }, // makes all src relative to cwd
@@ -79,7 +75,7 @@ module.exports = function(grunt) {
 				}
 		},
 		// task for configuration management: search and replace elements within XML files
-		xmlpoke: apigee_conf.config(apigee_conf.profiles(grunt).env),
+		xmlpoke: apigee_conf.xmlconfig(grunt.option('env'), grunt),
 	    // Configure a mochaTest task
 	    mochaTest: {
 	    	test: {
@@ -113,7 +109,7 @@ module.exports = function(grunt) {
 	        target: ['Gruntfile.js', 'target/apiproxy/**/*.js', 'tests/**/*.js', 'tasks/*.js']                 // array of files
 	    },
 		'string-replace': {
-			dist : searchNReplace.searchAndReplaceFiles(apigee_conf.profiles(grunt).env)
+			dist : searchNReplace.searchAndReplaceFiles(grunt.option('env'), grunt)
 		},
 	    shell: {
 	        options: {
@@ -159,13 +155,14 @@ module.exports = function(grunt) {
         },
 	})
 
-grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['clean', 'mkdir','copy', 'xmlpoke', 'string-replace', 'jshint', 'eslint', 'complexity', 'shell' ,'compress']);
+require('load-grunt-tasks')(grunt);
+grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['clean', 'saveGitRevision', 'mkdir','copy', 'xmlpoke', 'string-replace', 'jshint', 'eslint', 'complexity', 'shell' ,'compress']);
 	//delete and then import revision keeping same id
 	grunt.registerTask('default', [ 'buildApiBundle', 'getDeployedApiRevisions', 'undeployApiRevision',
 		'deleteApiRevision', 'importApiBundle', 'installNpmRevision', 'deployApiRevision', 'executeTests', 'notify:ApiDeployed']);
 
 	grunt.loadTasks('grunt/tasks');
-	if(grunt.option.flags().indexOf('--help') === -1 && !apigee_conf.profiles(grunt).env) {
-		grunt.fail.fatal('Invalid environment flag --env={env}. Provide environment as argument, see apigee_profiles in Grunfile.js.')
+	if(grunt.option.flags().indexOf('--help') === -1 && !grunt.option('env')) {
+		grunt.fail.fatal('Invalid environment --env={env}.')
 	}
 };
