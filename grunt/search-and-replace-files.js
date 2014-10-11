@@ -8,7 +8,7 @@ exports.searchAndReplaceFiles = function(env, grunt){
 				expand: true,
 			}],
 			options: {
-				replacements: [
+				replacements: [	
 				{
 					pattern: 'VALUE TO BE REPLACED #1',
 					replacement: '<%= grunt.template.today() %>_test'
