@@ -80,10 +80,11 @@ module.exports = function(grunt) {
 	    mochaTest: {
 	    	test: {
 	    		options: {
-	    			reporter: 'spec',
-	    			timeout : 5000
+	    			reporter: 'spec', //supported reporters: tap
+	    			timeout : 5000,
+	    			quiet: false // Optionally suppress output to standard out (defaults to false)
 	    		},
-	    		src: ['tests/**.js']
+	    		src: ["tests/<%= apigee_profiles[grunt.option('env')].apiproxy %>**.js"]
 	    	}
 	    },
 	    jshint: {

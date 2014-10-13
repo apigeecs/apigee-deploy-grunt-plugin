@@ -3,3 +3,5 @@
 target/
 report.xml
 checkstyle.xml
+results.html
+results.txt
