@@ -110,7 +110,7 @@ https://{org-env}.apigee.net/{api-basepath}/tree.jpg
 Example ```https://testmyapi-test.apigee.net/weathergrunt/tree.jpg```
 
 ##### Use apigee gateway leveraging a JavaCallout policy
-**Disable by default. Read section below for enabling directions.**
+**Disabled by default. Read section below for enabling directions.**
 ```
 https://{org-env}.apigee.net/{api-basepath}/javacallout
 ```
