@@ -38,7 +38,7 @@ Here's a [Slideshare presentation](http://www.slideshare.net/DiegoZuluaga2/apige
 * Deploys Node.js API Proxies (node_modules, resources, and public directories) see [Gruntfile.js compress task](https://github.com/apigeecs/apigee-deploy-grunt-plugin/blob/master/Gruntfile.js). Also support of [Apigee NPM API](http://apigee.com/docs/management/apis/post/organizations/%7Borg_name%7D/apis/%7Bapi_name%7D/revisions/%7Brevision_num%7D/npm)
 * Supports JavaCallout Policies. Compiles, package and include Java library dependencies.
 * It's ready for TDD with Mocha.js and Chai. See [tests directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tests).
-* Does static code analysis with [JSHint](http://www.jshint.com/) and [ESLint](http://eslint.org/)
+* Does static code analysis with [JSHint](http://www.jshint.com/) and [ESLint](http://eslint.org/). So, out-of-the-box, you get the ability to add custom rules that promote coding best practices in JavaScript. See [ESLint custom rules](https://gist.github.com/jareware/7179093)
 * Reviews JavaScript file complexity by leveraging [Grunt-Complexity](https://github.com/vigetlabs/grunt-complexity#grunt-complexity)
 * It's easier to troubleshoot. cURL command support. Just pass ```--curl=true```
 * Searches and replace files content with RegEx, string patterns, or XPath. See string-replace and xmlpoke tasks in Gruntfile.js
