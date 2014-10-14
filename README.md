@@ -46,7 +46,7 @@ Here's a [Slideshare presentation](http://www.slideshare.net/DiegoZuluaga2/apige
 * It's compatible with most CI tools Jenkins, Bamboo, Go, and Travis
 * Sends automatic desktop notifications with [Grunt Notify](https://github.com/dylang/grunt-notify#screenshots)
 * It's compatible with IDEs. See [Chrome Grunt Dev Tools](https://chrome.google.com/webstore/detail/grunt-devtools/fbiodiodggnlakggeeckkjccjhhjndnb?hl=en) and [Grunt Task Runner for Web Storm](http://www.jetbrains.com/webstorm/webhelp/using-grunt-task-runner.html)
-* It's Compatible with Maven. See tools to enable Proxy Dependency Maven Plugin. See pom.xml under [Tools directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tests). So you can still run JMeter tests or single Maven tasks, if Mocha doesn't suit you needs, see **shell:run_jmeter_tests** target**. [tools examples](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tools/forecastweather-jmeter-example).
+* It's Compatible with Maven. See tools to enable Proxy Dependency Maven Plugin. See pom.xml under [Tools directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tests). So you can still run JMeter tests or single Maven tasks, if Mocha doesn't suit you needs, see **shell:run_jmeter_tests** target**. [tools examples](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tools/forecastweather-jmeter-example). Follow [these steps](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tools/forecastweather-jmeter-example) to learn more.
 
 # Steps to get started
 **Prerequisites: Node.js and NPM**
