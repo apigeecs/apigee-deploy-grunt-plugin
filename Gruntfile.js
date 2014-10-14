@@ -124,6 +124,11 @@ module.exports = function(grunt) {
 	        // javaJar : {
 	        //     command: 'jar cvf target/apiproxy/resources/java/javaCallouts.jar -C target/java/bin .',
 	        // },
+
+	        //run jmeter tests from Grunt
+/*	        "run_jmeter_tests" : {
+	             command: 'mvn install -P <%= grunt.option("env") %>',
+	        },*/
 	    },
 	    notify: {
 	    	task_name: {
@@ -157,10 +162,10 @@ module.exports = function(grunt) {
 	})
 
 require('load-grunt-tasks')(grunt);
-grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['clean', 'saveGitRevision', 'mkdir','copy', 'xmlpoke', 'string-replace', 'jshint', 'eslint', 'complexity', 'shell' ,'compress']);
+grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['clean', 'saveGitRevision', 'mkdir','copy', 'xmlpoke', 'string-replace', 'jshint', 'eslint', 'complexity', /*'shell'*/ 'compress']);
 	//delete and then import revision keeping same id
 	grunt.registerTask('default', [ 'buildApiBundle', 'getDeployedApiRevisions', 'undeployApiRevision',
-		'deleteApiRevision', 'importApiBundle', 'installNpmRevision', 'deployApiRevision', 'executeTests', 'notify:ApiDeployed']);
+		'deleteApiRevision', 'importApiBundle', 'installNpmRevision', 'deployApiRevision', 'executeTests', /*'shell:run_jmeter_tests',*/ 'notify:ApiDeployed']);
 
 	grunt.loadTasks('grunt/tasks');
 	if(grunt.option.flags().indexOf('--help') === -1 && !grunt.option('env')) {
