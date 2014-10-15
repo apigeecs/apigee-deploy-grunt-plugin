@@ -15,7 +15,8 @@ chai.use(chaiHttp);
 describe('ForecastWeather Public API Test',function() {
   "use strict";
   before(function () {
-    //console.log('initialize');
+    // get OAuth 2.0 token
+    // console.log('initialize');
   });
   beforeEach(function () {
     //console.log('initialize each test');
@@ -80,10 +81,12 @@ describe('ForecastWeather Public API Test',function() {
   it('you should be able to retrieve image with content-type header image/jpg', function(done) {
     chai.request('https://testmyapi-test.apigee.net/weathergrunt/images')
     .get('/tree.jpg')
-    .res(function (res) {
-      expect(res).to.have.status(200);
-      expect(res).to.have.header('content-type','image/jpeg');
-      done();
+    .set('test', '123')
+    .send({ passsword: '123', confirmPassword: '123' })
+    .end(function (err, res) {
+       expect(res).to.have.status(200);
+       expect(res).to.have.header('content-type','image/jpeg');
+       done();
     });
   })
 
@@ -105,6 +108,7 @@ describe('ForecastWeather Public API Test',function() {
 
   });
   after(function () {
+      // teardown test
       //console.log('destroy');
   });
   afterEach(function () {
