@@ -82,7 +82,6 @@ describe('ForecastWeather Public API Test',function() {
     chai.request('https://testmyapi-test.apigee.net/weathergrunt/images')
     .get('/tree.jpg')
     .set('test', '123')
-    .send({ passsword: '123', confirmPassword: '123' })
     .end(function (err, res) {
        expect(res).to.have.status(200);
        expect(res).to.have.header('content-type','image/jpeg');
