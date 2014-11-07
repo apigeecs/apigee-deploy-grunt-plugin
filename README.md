@@ -1,4 +1,7 @@
 ![apigee-deploy-grunt-plugin](https://www.dropbox.com/s/5tgy3fpyud5skhv/Apigee%20Deploy%20Grunt%20Plugin%20logo2.png?dl=1 "apigee-deploy-grunt-plugin-logo")
+
+![apigee-deploy-grunt-terminal](https://www.dropbox.com/s/mkev4l0kmy3bvfw/apigee-deploy-grunt-plugin.gif?dl=1 "apigee-deploy-grunt-plugin-terminal")
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -27,6 +30,7 @@
 TL;DR
 ====
 Here's a [Slideshare presentation](http://www.slideshare.net/DiegoZuluaga2/apigee-deploy-grunt-plugin10) with the short version to get up and running in a few steps.
+[![apigee-deploy-grunt-plugin](https://www.dropbox.com/s/r2f7tq1n0wt208n/Apigee_deploy_grunt_plugin_1_0.png?dl=1)](http://www.slideshare.net/DiegoZuluaga2/apigee-deploy-grunt-plugin10)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
