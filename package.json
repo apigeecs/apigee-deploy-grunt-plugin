@@ -48,5 +48,5 @@
     "request": "^2.37.0",
     "time-grunt": "^1.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {}
 }
