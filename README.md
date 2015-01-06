@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/apigeecs/apigee-deploy-grunt-plugin.svg?branch=master)](https://travis-ci.org/apigeecs/apigee-deploy-grunt-plugin)
+
 ![apigee-deploy-grunt-plugin](https://www.dropbox.com/s/5tgy3fpyud5skhv/Apigee%20Deploy%20Grunt%20Plugin%20logo2.png?dl=1 "apigee-deploy-grunt-plugin-logo")
 
 ![apigee-deploy-grunt-terminal](https://www.dropbox.com/s/mkev4l0kmy3bvfw/apigee-deploy-grunt-plugin.gif?dl=1 "apigee-deploy-grunt-plugin-terminal")
