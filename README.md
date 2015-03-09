@@ -54,7 +54,10 @@ Here's a [Slideshare presentation](http://www.slideshare.net/DiegoZuluaga2/apige
 * It's compatible with IDEs. See [Chrome Grunt Dev Tools](https://chrome.google.com/webstore/detail/grunt-devtools/fbiodiodggnlakggeeckkjccjhhjndnb?hl=en) and [Grunt Task Runner for Web Storm](http://www.jetbrains.com/webstorm/webhelp/using-grunt-task-runner.html)
 * It's Compatible with Maven. So you can still run JMeter tests or single Maven tasks, if Mocha doesn't suit you needs, see **shell:run_jmeter_tests** target. [tools examples](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tools/forecastweather-jmeter-example).
 
-# Steps to get started
+# Getting Started
+The easiest way to use this plugin is by leveraging Yeoman. Follow Getting Started from [Apigee API Proxy Generator](https://github.com/dzuluaga/generator-apigee-deploy-grunt-api#getting-started).
+
+# Steps to get started (deprecated)
 **Prerequisites: Node.js and NPM**
 
 **Optional tools: Git. You can still use this plugin without Git, however manual steps will be required to initialize common folder.**
