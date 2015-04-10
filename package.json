@@ -1,6 +1,6 @@
 {
   "name": "apigee-deploy-grunt-plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Utility to manage API Proxy lifecycle in Apigee",
   "main": "index.js",
   "scripts": {

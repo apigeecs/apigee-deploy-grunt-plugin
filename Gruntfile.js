@@ -187,9 +187,20 @@ module.exports = function(grunt) {
 
 require('load-grunt-tasks')(grunt);
 grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['clean', 'saveGitRevision', 'mkdir','copy', 'xmlpoke', 'string-replace', 'jshint', 'eslint', 'complexity', /*'shell'*/ 'compress']);
-	//delete and then import revision keeping same id
-	grunt.registerTask('default', [ 'buildApiBundle', 'getDeployedApiRevisions', 'undeployApiRevision',
-		'deleteApiRevision', 'importApiBundle', 'installNpmRevision', 'deployApiRevision', 'executeTests', /*'shell:run_jmeter_tests',*/ 'notify:ApiDeployed']);
+  //1. import revision bumping revision id
+  grunt.registerTask('IMPORT_DEPLOY_BUMP_REVISION', [ 'buildApiBundle', 'getDeployedApiRevisions', 'undeployApiRevision',
+    'importApiBundle', 'installNpmRevision', 'deployApiRevision', 'executeTests', /*'shell:run_jmeter_tests',*/ 'notify:ApiDeployed']);
+
+  //2. update revision keeping same id
+  grunt.registerTask('UPDATE_CURRENT_REVISION', [ 'buildApiBundle', 'getDeployedApiRevisions', 'undeployApiRevision',
+    'updateApiRevision', 'installNpmRevision', 'deployApiRevision', 'executeTests', 'notify:ApiDeployed']);
+
+  //3. import revision and run seamless deployment
+  grunt.registerTask('DEPLOY_IMPORT_BUMP_SEAMLESS_REVISION', [ 'buildApiBundle', 'getDeployedApiRevisions', /*'undeployApiRevision',*/
+    'importApiBundle', 'installNpmRevision', 'deployApiRevision', 'executeTests', /*'shell:run_jmeter_tests',*/ 'notify:ApiDeployed']);
+
+  //set to DEPLOY_IMPORT_BUMP_SEAMLESS_REVISION by default. This is critical for production for seamless deploymen and not lose traffic
+  grunt.registerTask('default', [ 'DEPLOY_IMPORT_BUMP_SEAMLESS_REVISION' ]);
 
 	grunt.loadTasks('grunt/tasks');
 	if(grunt.option.flags().indexOf('--help') === -1 && !grunt.option('env')) {

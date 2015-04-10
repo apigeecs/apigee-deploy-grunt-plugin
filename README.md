@@ -6,13 +6,23 @@
  
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
-- [Why do we need another tool to manage the API Development Lifecycle for Apigee?](#why-do-we-need-another-tool-to-manage-the-api-development-lifecycle-for-apigee)
-- [Steps to get started](#steps-to-get-started)
+- [Why do we need a tool to manage the API Development Lifecycle for Apigee?](#why-do-we-need-a-tool-to-manage-the-api-development-lifecycle-for-apigee)
+- [Getting Started](#getting-started)
+- [Steps to get started (deprecated)](#steps-to-get-started-deprecated)
 - [Supported tasks](#supported-tasks)
-      - [execute end-to-end lifecycle and overwrite revision (keep the same revision id)](#execute-end-to-end-lifecycle-and-overwrite-revision-keep-the-same-revision-id)
+    - [Most Important Tasks](#most-important-tasks)
+        - [Default task : DEPLOY_IMPORT_BUMP_SEAMLESS_REVISION](#default-task--deploy_import_bump_seamless_revision)
+        - [IMPORT_DEPLOY_BUMP_REVISION Task](#import_deploy_bump_revision-task)
+        - [UPDATE_CURRENT_REVISION Task](#update_current_revision-task)
+    - [Test what you just deployed](#test-what-you-just-deployed)
+        - [Use apigee gateway and with Yahoo Weather standard Target](#use-apigee-gateway-and-with-yahoo-weather-standard-target)
+        - [Use apigee gateway calling Yahoo Weather through Apigee Node.js as Target](#use-apigee-gateway-calling-yahoo-weather-through-apigee-nodejs-as-target)
+        - [Use apigee gateway retrieving static content through Node.js as Target](#use-apigee-gateway-retrieving-static-content-through-nodejs-as-target)
+        - [Use apigee gateway retrieving static content through Node.js as Target (nested folder)](#use-apigee-gateway-retrieving-static-content-through-nodejs-as-target-nested-folder)
+        - [Use apigee gateway leveraging a JavaCallout policy](#use-apigee-gateway-leveraging-a-javacallout-policy)
+    - [Complementary Tasks](#complementary-tasks)
       - [get all deployed api revisions](#get-all-deployed-api-revisions)
       - [undeploy api revision](#undeploy-api-revision)
       - [import API bundle without deploying it](#import-api-bundle-without-deploying-it)
@@ -25,14 +35,9 @@
 - [Continuous Integration with Jenkins](#continuous-integration-with-jenkins)
 - [API Static Code Analysis](#api-static-code-analysis)
   - [JSHint](#jshint)
-  - [ESLint](#eshint)
+  - [ESLint](#eslint)
 - [Reusability of code with Maven Plugins and shell scripts/command line tools](#reusability-of-code-with-maven-plugins-and-shell-scriptscommand-line-tools)
 - [Contributing](#contributing)
-
-TL;DR
-====
-Here's a [Slideshare presentation](http://www.slideshare.net/DiegoZuluaga2/apigee-deploy-grunt-plugin10) with the short version to get up and running in a few steps.
-[![apigee-deploy-grunt-plugin](https://www.dropbox.com/s/r2f7tq1n0wt208n/Apigee_deploy_grunt_plugin_1_0.png?dl=1)](http://www.slideshare.net/DiegoZuluaga2/apigee-deploy-grunt-plugin10)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -58,6 +63,8 @@ Here's a [Slideshare presentation](http://www.slideshare.net/DiegoZuluaga2/apige
 The easiest way to use this plugin is by leveraging Yeoman. Follow Getting Started from [Apigee API Proxy Generator](https://github.com/dzuluaga/generator-apigee-deploy-grunt-api#getting-started).
 
 # Steps to get started (deprecated)
+Getting started with Yeoman is much easier than following steps above. You no longer need to folow these steps unless you want learn how to use Git Submodules.
+
 **Prerequisites: Node.js and NPM**
 
 **Optional tools: Git. You can still use this plugin without Git, however manual steps will be required to initialize common folder.**
@@ -82,12 +89,28 @@ git submodule update
 
 # Supported tasks
 
-#### execute end-to-end lifecycle and overwrite revision (keep the same revision id)
-```grunt --env=test --username={apigee_edge_email_address} --password={apigee_edge_password} --debug --curl=true```
+### Most Important Tasks
 
+##### Default task : DEPLOY_IMPORT_BUMP_SEAMLESS_REVISION
+One of the cool features of Apigee is seamless deployment or zero downtime. By default Grunt deploys in that mode. The following command will deploy api bundles with that mode:
+```bash
+$ grunt --env=test --username={apigee_edge_email_address} --password={apigee_edge_password} --debug --curl=true
+```
 **Note: Pass --debug flag to display Management API responses.**
 
-#### Test what you just deployed
+##### IMPORT_DEPLOY_BUMP_REVISION Task
+The following command will undeploy is similar to the default task, however it undeploys the bundle, so there's some downtime. import, and deploy the api bundle:
+```bash
+$ grunt IMPORT_DEPLOY_BUMP_REVISION --env=test --username={apigee_edge_email_address} --password={apigee_edge_password} --debug --curl=true
+```
+
+##### UPDATE_CURRENT_REVISION Task
+The following command will update current revision. Please be aware that it undeploys the current revision, so task is more suitable for development to avoid creating new revisions:
+```bash
+$ grunt UPDATE_CURRENT_REVISION --env=test --username={apigee_edge_email_address} --password={apigee_edge_password} --debug --curl=true
+```
+
+### Test what you just deployed
 Once previous is executed, you should be able to try the following calls:
 
 ##### Use apigee gateway and with Yahoo Weather standard Target
@@ -126,8 +149,7 @@ https://{org-env}.apigee.net/{api-basepath}/javacallout
 
 Example ```curl https://testmyapi-test.apigee.net/weathergrunt/javacallout```
 
-#### execute end-to-end lifecycle and keep last revision (increases revision id)
-```grunt --env=test --username=$ae_username --password=$ae_password --debug --keep-last-revision=true```
+### Complementary Tasks
 
 #### get all deployed api revisions
 ```grunt getDeployedApiRevisions --env=test --debug```
@@ -141,12 +163,16 @@ Example ```curl https://testmyapi-test.apigee.net/weathergrunt/javacallout```
 #### get all api revisions
 ```grunt getAllApiRevisions --env=test --debug```
 
-#### import API bundle without deploying it
+#### import API build bundle without deploying it
 ```grunt importApiBundle --env=test --debug --debug```
 
 #### delete a revision
 ```grunt deleteApiRevision:{revision_id} --env=test --debug```
 
+#### update a revision with build bundle
+```
+$ grunt updateApiRevision:{revision_id} --env=test
+```
 #### configuration management
 See grunt/apigee-config.js file.
 
@@ -166,10 +192,6 @@ See grunt/apigee-config.js file.
 
 ```
 --password={apigee_edge_password}
-```
-
-```
---keep-last-revision
 ```
 
 ```
