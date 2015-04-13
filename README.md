@@ -51,6 +51,7 @@
 * It's ready for TDD with Mocha.js and Chai. See [tests directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/tests).
 * Does static code analysis with [JSHint](http://www.jshint.com/) and [ESLint](http://eslint.org/). So, out-of-the-box, you get the ability to add custom rules that promote coding best practices in JavaScript. See [ESLint custom rules](https://gist.github.com/jareware/7179093)
 * Reviews JavaScript file complexity by leveraging [Grunt-Complexity](https://github.com/vigetlabs/grunt-complexity#grunt-complexity)
+* Suppports Apigee KVM migration see Gruntfile.js for configuration task or please visit [grunt-apigee-kvm](https://github.com/grunt-apigee/grunt-apigee-kvm)
 * It's easier to troubleshoot. cURL command support. Just pass ```--curl=true```
 * Searches and replace files content with RegEx, string patterns, or XPath. See string-replace and xmlpoke tasks in Gruntfile.js
 * Includes files dynamically from common git submodule to promote DRY (Don't Repeat Yourself) principle (check search-and-replace.js entries)

@@ -183,9 +183,36 @@ module.exports = function(grunt) {
                 }
             }
         },
+	    "apigee_kvm": {
+	        "testmyapi-test" : {
+	          options: {
+	            type: "env"
+	          },
+	          files: [{src: ['config/kvm/testmyapi/testmyapi-test/*.json']},
+	          ]
+	        },
+	        "testmyapi-prod" : {
+	          options: {
+	            type: "env"
+	          },
+	          files: [{src: ['config/kvm/testmyapi/testmyapi-prod/*.json']},
+	          ]
+	        },
+	        "testmyapi" : {
+	          options: {
+	            type: "org"
+	          },
+	          files: [{src: ['config/kvm/testmyapi/*.json']},
+	          ]
+	        }
+	    },
 	})
 
 require('load-grunt-tasks')(grunt);
+
+// importKVM at Organization and Environment level. See apigee_kvm task above
+grunt.registerTask('importKVMs', ['apigee_kvm:' + grunt.config.get("apigee_profiles")[grunt.option('env')].org + '-' + grunt.option("env"), 'apigee_kvm:' + grunt.config.get("apigee_profiles")[grunt.option('env')].org]);
+
 grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['clean', 'saveGitRevision', 'mkdir','copy', 'xmlpoke', 'string-replace', 'jshint', 'eslint', 'complexity', /*'shell'*/ 'compress']);
   //1. import revision bumping revision id
   grunt.registerTask('IMPORT_DEPLOY_BUMP_REVISION', [ 'buildApiBundle', 'getDeployedApiRevisions', 'undeployApiRevision',
@@ -200,7 +227,7 @@ grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', [
     'importApiBundle', 'installNpmRevision', 'deployApiRevision', 'executeTests', /*'shell:run_jmeter_tests',*/ 'notify:ApiDeployed']);
 
   //set to DEPLOY_IMPORT_BUMP_SEAMLESS_REVISION by default. This is critical for production for seamless deploymen and not lose traffic
-  grunt.registerTask('default', [ 'DEPLOY_IMPORT_BUMP_SEAMLESS_REVISION' ]);
+  grunt.registerTask('default', [ 'importKVMs', 'DEPLOY_IMPORT_BUMP_SEAMLESS_REVISION' ]);
 
 	grunt.loadTasks('grunt/tasks');
 	if(grunt.option.flags().indexOf('--help') === -1 && !grunt.option('env')) {

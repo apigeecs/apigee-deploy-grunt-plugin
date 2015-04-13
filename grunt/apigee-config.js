@@ -2,7 +2,7 @@ exports.profiles = function(grunt){
 	return	{
 			env : grunt.option('env'),     // replace with environment
 			'test' : {
-				apiproxy : 'forecastweather-grunt-plugin-api',
+					apiproxy : 'forecastweather-grunt-plugin-api',
 					org : 'testmyapi', // replace with organization
 					env : 'test',     // replace with environment
 					url_mgmt : 'https://api.enterprise.apigee.com',  // for cloud environments, leave as is
