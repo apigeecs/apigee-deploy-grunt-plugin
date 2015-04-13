@@ -1,0 +1,13 @@
+{
+  "entry": [
+    {
+      "name": "Key1",
+      "value": "value_one-test"
+    },
+    {
+      "name": "Key2",
+      "value": "value_two-test"
+    }
+  ],
+  "name": "targets"
+}
