@@ -280,3 +280,4 @@ Typo fixes, improvements to grammar or readability, it's all welcome.
 
 Copyright (c) 2014 Diego Zuluaga (twitter: @dzuluaga)
 Licensed under the MIT license.
+ 
