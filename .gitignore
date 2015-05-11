@@ -5,3 +5,5 @@ report.xml
 checkstyle.xml
 results.html
 results.txt
+/config/kvm/**/*.decrypted
+/config/kvm/**/*.json

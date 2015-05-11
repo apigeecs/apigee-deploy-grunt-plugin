@@ -7,7 +7,6 @@ module.exports = function(grunt) {
   grunt.registerTask('updateApiRevision', 'Update an API revision. e.g. grunt updateApiRevision:{revision_id}', function(revision) {
       var updateRevision = function(error, response, body){
         grunt.log.debug(response.statusCode)
-        grunt.log.debug(body);
         done();
       }
       var revisionl = revision || (grunt.option('revisions_undeployed') && grunt.option('revisions_undeployed').revision);

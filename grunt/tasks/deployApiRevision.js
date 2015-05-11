@@ -17,13 +17,12 @@ module.exports = function(grunt) {
 			grunt.log.debug(body);
 			done(error);
 		}
-		var revisionl = revision || grunt.option('revision');
 		//core logic
-		if(!revisionl) {
+		if(!revision) {
 			grunt.fail.fatal('invalid revision id. provide either argument as deployApiRevision:{revision_id}');
 		}else{
 			var done = this.async();
-			grunt_common.deployApiRevision(grunt.config.get('apigee_profiles'), revisionl, deployedRevision, grunt.option.flags().indexOf('--curl') !== -1)
+			grunt_common.deployApiRevision(grunt.config.get('apigee_profiles'), revision, deployedRevision, grunt.option.flags().indexOf('--curl') !== -1)
 		}
 	});
 };

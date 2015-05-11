@@ -211,6 +211,11 @@ See grunt/apigee-config.js file.
 --delay={seconds}
 ```
 
+Upload node.js modules (by default the plugin will try to install npm in Apigee Edge)
+```
+--upload-modules
+```
+
 Node.js Deployment
 ====
 In order to compress node.js modules, it's required node directory to exist in the root folder. By default node_modules, public, and resources are generated as part of the build. Compress configuration in Gruntfile.js can be modified to include any other configuration.

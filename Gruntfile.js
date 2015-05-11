@@ -66,15 +66,13 @@ module.exports = function(grunt) {
 			},
 		// make a zipfile
 		compress: {
-		/** No longer required as importApiBundle will install npm modules directly via NPM API **/
-		/*
 			"node-modules": helper.setNodeResources('./target/node/node_modules/' ,{
 									mode : 'zip',
 									archive: './target/apiproxy/resources/node/node_modules.zip'
 								}, [
 								{expand: true, cwd: './target/node/node_modules/', src: ['**'], dest: 'node_modules/' } // makes all src relative to cwd
 								]),
-		*/
+
 			"node-public": helper.setNodeResources('./target/node/public/', {
 								mode : 'zip',
 								archive: './target/apiproxy/resources/node/public.zip'
@@ -181,31 +179,33 @@ module.exports = function(grunt) {
                     hideComplexFunctions: false,      // only display maintainability
                     broadcast: false                 // broadcast data over event-bus
                 }
-            }
+            },
         },
-	    "apigee_kvm": {
-	        "testmyapi-test" : {
-	          options: {
-	            type: "env"
-	          },
-	          files: [{src: ['config/kvm/testmyapi/testmyapi-test/*.json']},
-	          ]
-	        },
-	        "testmyapi-prod" : {
-	          options: {
-	            type: "env"
-	          },
-	          files: [{src: ['config/kvm/testmyapi/testmyapi-prod/*.json']},
-	          ]
-	        },
-	        "testmyapi" : {
-	          options: {
-	            type: "org"
-	          },
-	          files: [{src: ['config/kvm/testmyapi/*.json']},
-	          ]
-	        }
-	    },
+		prompt: helper.prompts(grunt)
+// Configure this task to support KVM data config migrations
+/*      "apigee_kvm": {
+          "testmyapi-test" : {
+            options: {
+              type: "env"
+            },
+            files: [{src: ['config/kvm/testmyapi/testmyapi-test/*.json']},
+            ]
+          },
+          "testmyapi-prod" : {
+            options: {
+              type: "env"
+            },
+            files: [{src: ['config/kvm/testmyapi/testmyapi-prod/*.json']},
+            ]
+          },
+          "testmyapi" : {
+            options: {
+              type: "org"
+            },
+            files: [{src: ['config/kvm/testmyapi/*.json']},
+            ]
+          }
+      },*/
 	})
 
 require('load-grunt-tasks')(grunt);
@@ -213,21 +213,21 @@ require('load-grunt-tasks')(grunt);
 // importKVM at Organization and Environment level. See apigee_kvm task above
 grunt.registerTask('importKVMs', ['apigee_kvm:' + grunt.config.get("apigee_profiles")[grunt.option('env')].org + '-' + grunt.option("env"), 'apigee_kvm:' + grunt.config.get("apigee_profiles")[grunt.option('env')].org]);
 
-grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['clean', 'saveGitRevision', 'mkdir','copy', 'xmlpoke', 'string-replace', 'jshint', 'eslint', 'complexity', /*'shell'*/ 'compress']);
+grunt.registerTask('buildApiBundle', 'Build zip without importing it to Edge', ['apigeeGruntPluginBanner', 'prompt', 'clean', 'saveGitRevision', 'mkdir','copy', 'xmlpoke', 'string-replace', 'jshint', 'eslint', 'complexity', /*'shell'*/ 'compressAlias']);
   //1. import revision bumping revision id
   grunt.registerTask('IMPORT_DEPLOY_BUMP_REVISION', [ 'buildApiBundle', 'getDeployedApiRevisions', 'undeployApiRevision',
-    'importApiBundle', 'installNpmRevision', 'deployApiRevision', 'executeTests', /*'shell:run_jmeter_tests',*/ 'notify:ApiDeployed']);
+    'apigee_import_api_bundle', 'installNpmRevisionAlias', 'deployApiRevisionAlias', 'executeTests', /*'shell:run_jmeter_tests',*/ 'notify:ApiDeployed']);
 
   //2. update revision keeping same id
   grunt.registerTask('UPDATE_CURRENT_REVISION', [ 'buildApiBundle', 'getDeployedApiRevisions', 'undeployApiRevision',
-    'updateApiRevision', 'installNpmRevision', 'deployApiRevision', 'executeTests', 'notify:ApiDeployed']);
+    'updateApiRevision', 'installNpmRevisionAlias', 'deployApiRevisionAlias', 'executeTests', 'notify:ApiDeployed']);
 
   //3. import revision and run seamless deployment
-  grunt.registerTask('DEPLOY_IMPORT_BUMP_SEAMLESS_REVISION', [ 'buildApiBundle', 'getDeployedApiRevisions', /*'undeployApiRevision',*/
-    'importApiBundle', 'installNpmRevision', 'deployApiRevision', 'executeTests', /*'shell:run_jmeter_tests',*/ 'notify:ApiDeployed']);
+  grunt.registerTask('DEPLOY_IMPORT_BUMP_SEAMLESS_REVISION', [ 'buildApiBundle', 'getDeployedApiRevisions', 'apigee_import_api_bundle',
+  	'installNpmRevisionAlias', 'deployApiRevisionAlias', 'executeTests', /*'shell:run_jmeter_tests',*/ 'notify:ApiDeployed']);
 
   //set to DEPLOY_IMPORT_BUMP_SEAMLESS_REVISION by default. This is critical for production for seamless deploymen and not lose traffic
-  grunt.registerTask('default', [ 'importKVMs', 'DEPLOY_IMPORT_BUMP_SEAMLESS_REVISION' ]);
+  grunt.registerTask('default', [ /*'importKVMs',*/'DEPLOY_IMPORT_BUMP_SEAMLESS_REVISION' ]);
 
 	grunt.loadTasks('grunt/tasks');
 	if(grunt.option.flags().indexOf('--help') === -1 && !grunt.option('env')) {
