@@ -1,6 +1,6 @@
 {
-  "name": "<%= apiname %>",
-  "version": "0.0.1",
+  "name": "apigee-deploy-grunt-plugin",
+  "version": "0.0.4",
   "description": "Out of the box I include scaffolding apiproxy, Node.js, and Gruntfile to build your app.",
   "main": "index.js",
   "scripts": {
