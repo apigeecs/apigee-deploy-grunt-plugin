@@ -4,6 +4,6 @@ node_js:
 before_install: npm install -g grunt-cli
 install: npm install
 # step pending until Apigee credentials are encrypted in Travis by following these steps: http://docs.travis-ci.com/user/encryption-keys/
-before_script: grunt default -env=test -username=$ae_username -password=$ae_password -debug
+before_script: grunt default -env=test -username=$ae_username -password=$ae_password -debug --upload-modules
 # Travis will look for scripts in the package.json, there I indicated the test step should run grunt mochaTest -env=test
 # based on answer from SO http://stackoverflow.com/questions/21128478/run-grunt-build-command-on-travis-ci
