@@ -43,6 +43,8 @@
 
 # Why do we need a tool to manage the API Development Lifecycle for Apigee?
 
+[![Join the chat at https://gitter.im/apigeecs/apigee-deploy-grunt-plugin](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/apigeecs/apigee-deploy-grunt-plugin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 * Pluggable environment (thousands of npm and grunt modules and plugins)
 * Grunt is perfect for applying continuous improvement by easily adding custom tasks. See [Tasks directory](https://github.com/apigeecs/apigee-deploy-grunt-plugin/tree/master/grunt/tasks)
 * It's pure JavaScript running on Node.js. Enough said, right :-)
