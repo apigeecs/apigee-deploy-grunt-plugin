@@ -10,7 +10,7 @@ exports.simpleWeatherArray = function(){
 	var weatherArray = [
 		{
 			"url" : common.url + "?w=2502265",
-			"name" : "Sunnyvale",
+			"name" : "Sunnyvale" ,
 			"responseCode" : 200
 		},
 		{
