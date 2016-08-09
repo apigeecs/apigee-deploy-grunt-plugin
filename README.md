@@ -160,7 +160,7 @@ Example ```curl https://testmyapi-test.apigee.net/weathergrunt/javacallout```
 #### undeploy api revision
 ```grunt undeployApiRevision:{revision_id} --env=test --debug```
 
-#### undeploy api revision
+#### deploy api revision
 ```grunt deployApiRevision:{revision_id} --env=test --debug```
 
 #### get all api revisions
